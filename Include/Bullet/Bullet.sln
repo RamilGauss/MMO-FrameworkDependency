@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BulletCollision", "BulletCollision\BulletCollision.vcxproj", "{F5103A37-D47E-41F9-B25B-68236DEBAC9D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BulletDynamics", "BulletDynamics\BulletDynamics.vcxproj", "{2B8C26FE-E6BF-4D0B-BE19-554BF262435D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BulletSoftBody", "BulletSoftBody\BulletSoftBody.vcxproj", "{3F135256-C270-41E3-B84C-42D14DA36CE8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinearMath", "LinearMath\LinearMath.vcxproj", "{806A5C9A-5E31-4A56-827A-B3B9081022F4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConvexDecomposition", "Extras\ConvexDecomposition\ConvexDecomposition.vcxproj", "{4F0073D1-D94F-49B7-85C7-AF5CD340AF25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5103A37-D47E-41F9-B25B-68236DEBAC9D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F5103A37-D47E-41F9-B25B-68236DEBAC9D}.Debug|Win32.Build.0 = Debug|Win32
+		{F5103A37-D47E-41F9-B25B-68236DEBAC9D}.Release|Win32.ActiveCfg = Release|Win32
+		{F5103A37-D47E-41F9-B25B-68236DEBAC9D}.Release|Win32.Build.0 = Release|Win32
+		{2B8C26FE-E6BF-4D0B-BE19-554BF262435D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2B8C26FE-E6BF-4D0B-BE19-554BF262435D}.Debug|Win32.Build.0 = Debug|Win32
+		{2B8C26FE-E6BF-4D0B-BE19-554BF262435D}.Release|Win32.ActiveCfg = Release|Win32
+		{2B8C26FE-E6BF-4D0B-BE19-554BF262435D}.Release|Win32.Build.0 = Release|Win32
+		{3F135256-C270-41E3-B84C-42D14DA36CE8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3F135256-C270-41E3-B84C-42D14DA36CE8}.Debug|Win32.Build.0 = Debug|Win32
+		{3F135256-C270-41E3-B84C-42D14DA36CE8}.Release|Win32.ActiveCfg = Release|Win32
+		{3F135256-C270-41E3-B84C-42D14DA36CE8}.Release|Win32.Build.0 = Release|Win32
+		{806A5C9A-5E31-4A56-827A-B3B9081022F4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{806A5C9A-5E31-4A56-827A-B3B9081022F4}.Debug|Win32.Build.0 = Debug|Win32
+		{806A5C9A-5E31-4A56-827A-B3B9081022F4}.Release|Win32.ActiveCfg = Release|Win32
+		{806A5C9A-5E31-4A56-827A-B3B9081022F4}.Release|Win32.Build.0 = Release|Win32
+		{4F0073D1-D94F-49B7-85C7-AF5CD340AF25}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4F0073D1-D94F-49B7-85C7-AF5CD340AF25}.Debug|Win32.Build.0 = Debug|Win32
+		{4F0073D1-D94F-49B7-85C7-AF5CD340AF25}.Release|Win32.ActiveCfg = Release|Win32
+		{4F0073D1-D94F-49B7-85C7-AF5CD340AF25}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B28D350B-EC98-4294-8007-A0459C945FF3}
+	EndGlobalSection
+EndGlobal

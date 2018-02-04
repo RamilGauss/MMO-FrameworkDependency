@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{17CF3FFE-DB11-4400-9635-B49F147B6D1A}</ProjectGuid>
+    <RootNamespace>RTShaderSystem</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.27130.2020</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>../../../../Bin\</OutDir>
+    <IntDir>../../../../Temp/$(Configuration)/$(ProjectName)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>../../../../Bin\</OutDir>
+    <IntDir>../../../../Temp/$(Configuration)/$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>./include;./src;../../OgreMain/include;$(BOOST_PATH);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;RTSHADERSYSTEM_EXPORTS;OgreRTShaderSystem_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OgreMain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Ogre$(ProjectName)_d.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../../Lib;$(BOOST_PATH)/lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>../../../../Lib/$(TargetName)_d.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>./include;./src;../../OgreMain/include;$(BOOST_PATH);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;RTSHADERSYSTEM_EXPORTS;OgreRTShaderSystem_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OgreMain.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Ogre$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../../Lib;$(BOOST_PATH)/lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>../../../../Lib/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\OgreShaderCGProgramProcessor.cpp" />
+    <ClCompile Include="src\OgreShaderCGProgramWriter.cpp" />
+    <ClCompile Include="src\OgreShaderExDualQuaternionSkinning.cpp" />
+    <ClCompile Include="src\OgreShaderExHardwareSkinning.cpp" />
+    <ClCompile Include="src\OgreShaderExHardwareSkinningTechnique.cpp" />
+    <ClCompile Include="src\OgreShaderExIntegratedPSSM3.cpp" />
+    <ClCompile Include="src\OgreShaderExLayeredBlending.cpp" />
+    <ClCompile Include="src\OgreShaderExLinearSkinning.cpp" />
+    <ClCompile Include="src\OgreShaderExNormalMapLighting.cpp" />
+    <ClCompile Include="src\OgreShaderExPerPixelLighting.cpp" />
+    <ClCompile Include="src\OgreShaderExTextureAtlasSampler.cpp" />
+    <ClCompile Include="src\OgreShaderExTriplanarTexturing.cpp" />
+    <ClCompile Include="src\OgreShaderFFPColour.cpp" />
+    <ClCompile Include="src\OgreShaderFFPFog.cpp" />
+    <ClCompile Include="src\OgreShaderFFPLighting.cpp" />
+    <ClCompile Include="src\OgreShaderFFPRenderStateBuilder.cpp" />
+    <ClCompile Include="src\OgreShaderFFPTexturing.cpp" />
+    <ClCompile Include="src\OgreShaderFFPTransform.cpp" />
+    <ClCompile Include="src\OgreShaderFunction.cpp" />
+    <ClCompile Include="src\OgreShaderFunctionAtom.cpp" />
+    <ClCompile Include="src\OgreShaderGenerator.cpp" />
+    <ClCompile Include="src\OgreShaderGLSLESProgramProcessor.cpp" />
+    <ClCompile Include="src\OgreShaderGLSLESProgramWriter.cpp" />
+    <ClCompile Include="src\OgreShaderGLSLProgramProcessor.cpp" />
+    <ClCompile Include="src\OgreShaderGLSLProgramWriter.cpp" />
+    <ClCompile Include="src\OgreShaderHLSLProgramProcessor.cpp" />
+    <ClCompile Include="src\OgreShaderHLSLProgramWriter.cpp" />
+    <ClCompile Include="src\OgreShaderMaterialSerializerListener.cpp" />
+    <ClCompile Include="src\OgreShaderParameter.cpp" />
+    <ClCompile Include="src\OgreShaderProgram.cpp" />
+    <ClCompile Include="src\OgreShaderProgramManager.cpp" />
+    <ClCompile Include="src\OgreShaderProgramProcessor.cpp" />
+    <ClCompile Include="src\OgreShaderProgramSet.cpp" />
+    <ClCompile Include="src\OgreShaderProgramWriter.cpp" />
+    <ClCompile Include="src\OgreShaderProgramWriterManager.cpp" />
+    <ClCompile Include="src\OgreShaderRenderState.cpp" />
+    <ClCompile Include="src\OgreShaderScriptTranslator.cpp" />
+    <ClCompile Include="src\OgreShaderSubRenderState.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\OgreRTShaderSystem.h" />
+    <ClInclude Include="include\OgreShaderCGProgramProcessor.h" />
+    <ClInclude Include="include\OgreShaderCGProgramWriter.h" />
+    <ClInclude Include="include\OgreShaderExDualQuaternionSkinning.h" />
+    <ClInclude Include="include\OgreShaderExHardwareSkinning.h" />
+    <ClInclude Include="include\OgreShaderExHardwareSkinningTechnique.h" />
+    <ClInclude Include="include\OgreShaderExIntegratedPSSM3.h" />
+    <ClInclude Include="include\OgreShaderExLayeredBlending.h" />
+    <ClInclude Include="include\OgreShaderExLinearSkinning.h" />
+    <ClInclude Include="include\OgreShaderExNormalMapLighting.h" />
+    <ClInclude Include="include\OgreShaderExPerPixelLighting.h" />
+    <ClInclude Include="include\OgreShaderExTextureAtlasSampler.h" />
+    <ClInclude Include="include\OgreShaderExTriplanarTexturing.h" />
+    <ClInclude Include="include\OgreShaderFFPColour.h" />
+    <ClInclude Include="include\OgreShaderFFPFog.h" />
+    <ClInclude Include="include\OgreShaderFFPLighting.h" />
+    <ClInclude Include="include\OgreShaderFFPRenderState.h" />
+    <ClInclude Include="include\OgreShaderFFPRenderStateBuilder.h" />
+    <ClInclude Include="include\OgreShaderFFPTexturing.h" />
+    <ClInclude Include="include\OgreShaderFFPTransform.h" />
+    <ClInclude Include="include\OgreShaderFunction.h" />
+    <ClInclude Include="include\OgreShaderFunctionAtom.h" />
+    <ClInclude Include="include\OgreShaderGenerator.h" />
+    <ClInclude Include="include\OgreShaderGLSLESProgramProcessor.h" />
+    <ClInclude Include="include\OgreShaderGLSLESProgramWriter.h" />
+    <ClInclude Include="include\OgreShaderGLSLProgramProcessor.h" />
+    <ClInclude Include="include\OgreShaderGLSLProgramWriter.h" />
+    <ClInclude Include="include\OgreShaderHLSLProgramProcessor.h" />
+    <ClInclude Include="include\OgreShaderHLSLProgramWriter.h" />
+    <ClInclude Include="include\OgreShaderMaterialSerializerListener.h" />
+    <ClInclude Include="include\OgreShaderParameter.h" />
+    <ClInclude Include="include\OgreShaderPrerequisites.h" />
+    <ClInclude Include="include\OgreShaderProgram.h" />
+    <ClInclude Include="include\OgreShaderProgramManager.h" />
+    <ClInclude Include="include\OgreShaderProgramProcessor.h" />
+    <ClInclude Include="include\OgreShaderProgramSet.h" />
+    <ClInclude Include="include\OgreShaderProgramWriter.h" />
+    <ClInclude Include="include\OgreShaderProgramWriterManager.h" />
+    <ClInclude Include="include\OgreShaderRenderState.h" />
+    <ClInclude Include="include\OgreShaderScriptTranslator.h" />
+    <ClInclude Include="include\OgreShaderSubRenderState.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Volume\Volume.vcxproj">
+      <Project>{7e80bbef-ab14-48de-b175-91634689b0f6}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

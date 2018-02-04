@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{EE78A6F4-C80B-40C4-A576-65B50E65FFF6}</ProjectGuid>
+    <RootNamespace>Overlay</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.27130.2020</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>../../../../Bin\</OutDir>
+    <IntDir>../../../../Temp/$(Configuration)/$(ProjectName)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>../../../../Bin\</OutDir>
+    <IntDir>../../../../Temp/$(Configuration)/$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>./include;./src;../../OgreMain/include;$(BOOST_PATH);../../../OGRE_dep;../../../OGRE_dep/freetype;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OVERLAY_EXPORTS;OGRE_OVERLAY_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OgreMain_d.lib;freetype_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Ogre$(ProjectName)_d.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../../Lib;$(BOOST_PATH)/lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>../../../../Lib/$(TargetName)_d.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>./include;./src;../../OgreMain/include;$(BOOST_PATH);../../../OGRE_dep;../../../OGRE_dep/freetype;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;OVERLAY_EXPORTS;OGRE_OVERLAY_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OgreMain.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Ogre$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../../Lib;$(BOOST_PATH)/lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>../../../../Lib/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\OgreBorderPanelOverlayElement.cpp" />
+    <ClCompile Include="src\OgreFont.cpp" />
+    <ClCompile Include="src\OgreFontManager.cpp" />
+    <ClCompile Include="src\OgreOverlay.cpp" />
+    <ClCompile Include="src\OgreOverlayContainer.cpp" />
+    <ClCompile Include="src\OgreOverlayElement.cpp" />
+    <ClCompile Include="src\OgreOverlayElementCommands.cpp" />
+    <ClCompile Include="src\OgreOverlayElementFactory.cpp" />
+    <ClCompile Include="src\OgreOverlayManager.cpp" />
+    <ClCompile Include="src\OgreOverlayProfileSessionListener.cpp" />
+    <ClCompile Include="src\OgreOverlaySystem.cpp" />
+    <ClCompile Include="src\OgrePanelOverlayElement.cpp" />
+    <ClCompile Include="src\OgreTextAreaOverlayElement.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\OgreBorderPanelOverlayElement.h" />
+    <ClInclude Include="include\OgreFont.h" />
+    <ClInclude Include="include\OgreFontManager.h" />
+    <ClInclude Include="include\OgreOverlay.h" />
+    <ClInclude Include="include\OgreOverlayContainer.h" />
+    <ClInclude Include="include\OgreOverlayElement.h" />
+    <ClInclude Include="include\OgreOverlayElementCommands.h" />
+    <ClInclude Include="include\OgreOverlayElementFactory.h" />
+    <ClInclude Include="include\OgreOverlayManager.h" />
+    <ClInclude Include="include\OgreOverlayPrerequisites.h" />
+    <ClInclude Include="include\OgreOverlayProfileSessionListener.h" />
+    <ClInclude Include="include\OgreOverlaySystem.h" />
+    <ClInclude Include="include\OgrePanelOverlayElement.h" />
+    <ClInclude Include="include\OgreTextAreaOverlayElement.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Terrain\Terrain.vcxproj">
+      <Project>{1414551e-2f77-41e6-92d5-80aaba5da241}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A385AC69-A944-3A62-B9C6-720559A54D06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{6614B8E2-8F13-3FEB-AED0-EC9D63C4BD74}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="zzip\dir.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zzip\err.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zzip\fetch.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zzip\file.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zzip\fseeko.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zzip\info.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zzip\memdisk.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zzip\mmapped.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zzip\plugin.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zzip\stat.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zzip\write.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zzip\zip.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="zzip\__debug.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\__dirent.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\__fnmatch.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\__hints.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\__mmap.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\_config.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\_msvc.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\autoconf.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\conf.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\fetch.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\file.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\format.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\fseeko.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\info.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\lib.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\memdisk.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\mmapped.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\plugin.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\stdint.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\types.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\write.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\zzip.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zzip\zzip32.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

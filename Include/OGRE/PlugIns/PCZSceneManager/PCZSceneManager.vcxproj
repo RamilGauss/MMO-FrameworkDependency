@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1D3C31EF-410C-4436-8664-BCCFAA3EDB44}</ProjectGuid>
+    <RootNamespace>PCZSceneManager</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.27130.2020</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>../../../../Bin\</OutDir>
+    <IntDir>../../../../Temp/$(Configuration)/$(ProjectName)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>../../../../Bin\</OutDir>
+    <IntDir>../../../../Temp/$(Configuration)/$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>./include;./src;../../OgreMain/include;$(BOOST_PATH);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PCZSCENEMANAGER_EXPORTS;OGRE_PCZPLUGIN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OgreMain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Plugin_$(ProjectName)_d.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../../Lib;$(BOOST_PATH)/lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>../../../../Lib/$(TargetName)_d.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>./include;./src;../../OgreMain/include;$(BOOST_PATH);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PCZSCENEMANAGER_EXPORTS;OGRE_PCZPLUGIN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OgreMain.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)Plugin_$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../../Lib;$(BOOST_PATH)/lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>../../../../Lib/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\OgreAntiPortal.cpp" />
+    <ClCompile Include="src\OgreCapsule.cpp" />
+    <ClCompile Include="src\OgreDefaultZone.cpp" />
+    <ClCompile Include="src\OgrePCPlane.cpp" />
+    <ClCompile Include="src\OgrePCZCamera.cpp" />
+    <ClCompile Include="src\OgrePCZFrustum.cpp" />
+    <ClCompile Include="src\OgrePCZLight.cpp" />
+    <ClCompile Include="src\OgrePCZone.cpp" />
+    <ClCompile Include="src\OgrePCZoneFactory.cpp" />
+    <ClCompile Include="src\OgrePCZPlugin.cpp" />
+    <ClCompile Include="src\OgrePCZSceneManager.cpp" />
+    <ClCompile Include="src\OgrePCZSceneManagerDll.cpp" />
+    <ClCompile Include="src\OgrePCZSceneNode.cpp" />
+    <ClCompile Include="src\OgrePCZSceneQuery.cpp" />
+    <ClCompile Include="src\OgrePortal.cpp" />
+    <ClCompile Include="src\OgrePortalBase.cpp" />
+    <ClCompile Include="src\OgreSegment.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\OgreAntiPortal.h" />
+    <ClInclude Include="include\OgreCapsule.h" />
+    <ClInclude Include="include\OgreDefaultZone.h" />
+    <ClInclude Include="include\OgrePCPlane.h" />
+    <ClInclude Include="include\OgrePCZCamera.h" />
+    <ClInclude Include="include\OgrePCZFrustum.h" />
+    <ClInclude Include="include\OgrePCZLight.h" />
+    <ClInclude Include="include\OgrePCZone.h" />
+    <ClInclude Include="include\OgrePCZoneFactory.h" />
+    <ClInclude Include="include\OgrePCZPlugin.h" />
+    <ClInclude Include="include\OgrePCZPrerequisites.h" />
+    <ClInclude Include="include\OgrePCZSceneManager.h" />
+    <ClInclude Include="include\OgrePCZSceneNode.h" />
+    <ClInclude Include="include\OgrePCZSceneQuery.h" />
+    <ClInclude Include="include\OgrePortal.h" />
+    <ClInclude Include="include\OgrePortalBase.h" />
+    <ClInclude Include="include\OgreSegment.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\RenderSystems\Direct3D9\Direct3D9.vcxproj">
+      <Project>{6b315357-c30d-49f2-8df0-7f494eb734d0}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

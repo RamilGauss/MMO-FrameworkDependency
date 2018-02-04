@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{806A5C9A-5E31-4A56-827A-B3B9081022F4}</ProjectGuid>
+    <RootNamespace>LinearMath</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.27130.2020</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>../../../Lib\</OutDir>
+    <IntDir>../../../Temp/$(Configuration)/Bullet/LinearMath\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>../../../Lib\</OutDir>
+    <IntDir>../../../Temp/$(Configuration)/Bullet/LinearMath\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_HAS_EXCEPTIONS=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)_d.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_HAS_EXCEPTIONS=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="btAabbUtil2.h" />
+    <ClInclude Include="btAlignedAllocator.h" />
+    <ClInclude Include="btAlignedObjectArray.h" />
+    <ClInclude Include="btConvexHull.h" />
+    <ClInclude Include="btConvexHullComputer.h" />
+    <ClInclude Include="btDefaultMotionState.h" />
+    <ClInclude Include="btGeometryUtil.h" />
+    <ClInclude Include="btGrahamScan2dConvexHull.h" />
+    <ClInclude Include="btHashMap.h" />
+    <ClInclude Include="btIDebugDraw.h" />
+    <ClInclude Include="btList.h" />
+    <ClInclude Include="btMatrix3x3.h" />
+    <ClInclude Include="btMatrixX.h" />
+    <ClInclude Include="btMinMax.h" />
+    <ClInclude Include="btMotionState.h" />
+    <ClInclude Include="btPolarDecomposition.h" />
+    <ClInclude Include="btPoolAllocator.h" />
+    <ClInclude Include="btQuadWord.h" />
+    <ClInclude Include="btQuaternion.h" />
+    <ClInclude Include="btQuickprof.h" />
+    <ClInclude Include="btRandom.h" />
+    <ClInclude Include="btScalar.h" />
+    <ClInclude Include="btSerializer.h" />
+    <ClInclude Include="btStackAlloc.h" />
+    <ClInclude Include="btTransform.h" />
+    <ClInclude Include="btTransformUtil.h" />
+    <ClInclude Include="btVector3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="btAlignedAllocator.cpp" />
+    <ClCompile Include="btConvexHull.cpp" />
+    <ClCompile Include="btConvexHullComputer.cpp" />
+    <ClCompile Include="btGeometryUtil.cpp" />
+    <ClCompile Include="btPolarDecomposition.cpp" />
+    <ClCompile Include="btQuickprof.cpp" />
+    <ClCompile Include="btSerializer.cpp" />
+    <ClCompile Include="btVector3.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

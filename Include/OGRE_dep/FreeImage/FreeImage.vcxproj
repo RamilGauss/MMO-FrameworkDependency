@@ -1,0 +1,827 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CacheFile.h" />
+    <ClInclude Include="DeprecationManager\DeprecationMgr.h" />
+    <ClInclude Include="FreeImage.h" />
+    <ClInclude Include="FreeImageIO.h" />
+    <ClInclude Include="FreeImageToolkit\Filters.h" />
+    <ClInclude Include="FreeImageToolkit\Resize.h" />
+    <ClInclude Include="FreeImage\PSDParser.h" />
+    <ClInclude Include="LibJPEG\cderror.h" />
+    <ClInclude Include="LibJPEG\jconfig.h" />
+    <ClInclude Include="LibJPEG\jdct.h" />
+    <ClInclude Include="LibJPEG\jerror.h" />
+    <ClInclude Include="LibJPEG\jinclude.h" />
+    <ClInclude Include="LibJPEG\jmemsys.h" />
+    <ClInclude Include="LibJPEG\jmorecfg.h" />
+    <ClInclude Include="LibJPEG\jpegint.h" />
+    <ClInclude Include="LibJPEG\jpeglib.h" />
+    <ClInclude Include="LibJPEG\jversion.h" />
+    <ClInclude Include="LibJPEG\transupp.h" />
+    <ClInclude Include="LibOpenJPEG\bio.h" />
+    <ClInclude Include="LibOpenJPEG\cidx_manager.h" />
+    <ClInclude Include="LibOpenJPEG\cio.h" />
+    <ClInclude Include="LibOpenJPEG\dwt.h" />
+    <ClInclude Include="LibOpenJPEG\event.h" />
+    <ClInclude Include="LibOpenJPEG\fix.h" />
+    <ClInclude Include="LibOpenJPEG\image.h" />
+    <ClInclude Include="LibOpenJPEG\indexbox_manager.h" />
+    <ClInclude Include="LibOpenJPEG\int.h" />
+    <ClInclude Include="LibOpenJPEG\j2k.h" />
+    <ClInclude Include="LibOpenJPEG\j2k_lib.h" />
+    <ClInclude Include="LibOpenJPEG\jp2.h" />
+    <ClInclude Include="LibOpenJPEG\jpt.h" />
+    <ClInclude Include="LibOpenJPEG\mct.h" />
+    <ClInclude Include="LibOpenJPEG\mqc.h" />
+    <ClInclude Include="LibOpenJPEG\openjpeg.h" />
+    <ClInclude Include="LibOpenJPEG\opj_config.h" />
+    <ClInclude Include="LibOpenJPEG\opj_includes.h" />
+    <ClInclude Include="LibOpenJPEG\opj_malloc.h" />
+    <ClInclude Include="LibOpenJPEG\pi.h" />
+    <ClInclude Include="LibOpenJPEG\raw.h" />
+    <ClInclude Include="LibOpenJPEG\t1.h" />
+    <ClInclude Include="LibOpenJPEG\t1_luts.h" />
+    <ClInclude Include="LibOpenJPEG\t2.h" />
+    <ClInclude Include="LibOpenJPEG\tcd.h" />
+    <ClInclude Include="LibOpenJPEG\tgt.h" />
+    <ClInclude Include="LibPNG\png.h" />
+    <ClInclude Include="LibPNG\pngconf.h" />
+    <ClInclude Include="LibPNG\pngdebug.h" />
+    <ClInclude Include="LibPNG\pnginfo.h" />
+    <ClInclude Include="LibPNG\pnglibconf.h" />
+    <ClInclude Include="LibPNG\pngpriv.h" />
+    <ClInclude Include="LibPNG\pngstruct.h" />
+    <ClInclude Include="LibRawLite\internal\defines.h" />
+    <ClInclude Include="LibRawLite\internal\libraw_bytebuffer.h" />
+    <ClInclude Include="LibRawLite\internal\libraw_internal_funcs.h" />
+    <ClInclude Include="LibRawLite\internal\var_defines.h" />
+    <ClInclude Include="LibRawLite\libraw\libraw.h" />
+    <ClInclude Include="LibRawLite\libraw\libraw_alloc.h" />
+    <ClInclude Include="LibRawLite\libraw\libraw_const.h" />
+    <ClInclude Include="LibRawLite\libraw\libraw_datastream.h" />
+    <ClInclude Include="LibRawLite\libraw\libraw_internal.h" />
+    <ClInclude Include="LibRawLite\libraw\libraw_types.h" />
+    <ClInclude Include="LibRawLite\libraw\libraw_version.h" />
+    <ClInclude Include="LibTIFF4\t4.h" />
+    <ClInclude Include="LibTIFF4\tiff.h" />
+    <ClInclude Include="LibTIFF4\tiffconf.h" />
+    <ClInclude Include="LibTIFF4\tiffconf.vc.h" />
+    <ClInclude Include="LibTIFF4\tiffconf.wince.h" />
+    <ClInclude Include="LibTIFF4\tiffio.h" />
+    <ClInclude Include="LibTIFF4\tiffio.hxx" />
+    <ClInclude Include="LibTIFF4\tiffiop.h" />
+    <ClInclude Include="LibTIFF4\tiffvers.h" />
+    <ClInclude Include="LibTIFF4\tif_config.h" />
+    <ClInclude Include="LibTIFF4\tif_config.vc.h" />
+    <ClInclude Include="LibTIFF4\tif_config.wince.h" />
+    <ClInclude Include="LibTIFF4\tif_dir.h" />
+    <ClInclude Include="LibTIFF4\tif_fax3.h" />
+    <ClInclude Include="LibTIFF4\tif_predict.h" />
+    <ClInclude Include="LibTIFF4\uvcode.h" />
+    <ClInclude Include="Metadata\FIRational.h" />
+    <ClInclude Include="Metadata\FreeImageTag.h" />
+    <ClInclude Include="OpenEXR\Half\eLut.h" />
+    <ClInclude Include="OpenEXR\Half\half.h" />
+    <ClInclude Include="OpenEXR\Half\halfFunction.h" />
+    <ClInclude Include="OpenEXR\Half\halfLimits.h" />
+    <ClInclude Include="OpenEXR\Half\toFloat.h" />
+    <ClInclude Include="OpenEXR\Iex\Iex.h" />
+    <ClInclude Include="OpenEXR\Iex\IexBaseExc.h" />
+    <ClInclude Include="OpenEXR\Iex\IexErrnoExc.h" />
+    <ClInclude Include="OpenEXR\Iex\IexMacros.h" />
+    <ClInclude Include="OpenEXR\Iex\IexMathExc.h" />
+    <ClInclude Include="OpenEXR\Iex\IexThrowErrnoExc.h" />
+    <ClInclude Include="OpenEXR\IlmBaseConfig.h" />
+    <ClInclude Include="OpenEXR\IlmImf\b44ExpLogTable.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfAcesFile.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfArray.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfAutoArray.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfB44Compressor.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfBoxAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfChannelList.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfChannelListAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfCheckedArithmetic.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfChromaticities.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfChromaticitiesAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfCompression.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfCompressionAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfCompressor.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfConvert.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfCRgbaFile.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfDoubleAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfEnvmap.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfEnvmapAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfFloatAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfFrameBuffer.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfFramesPerSecond.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfHeader.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfHuf.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfInputFile.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfInt64.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfIntAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfIO.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfKeyCode.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfKeyCodeAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfLineOrder.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfLineOrderAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfLut.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfMatrixAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfMisc.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfMultiView.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfName.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfOpaqueAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfOutputFile.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfPixelType.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfPizCompressor.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfPreviewImage.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfPreviewImageAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfPxr24Compressor.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfRational.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfRationalAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfRgba.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfRgbaFile.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfRgbaYca.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfRleCompressor.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfScanLineInputFile.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfStandardAttributes.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfStdIO.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfStringAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfStringVectorAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfTestFile.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfThreading.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfTileDescription.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfTileDescriptionAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfTiledInputFile.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfTiledMisc.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfTiledOutputFile.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfTiledRgbaFile.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfTileOffsets.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfTimeCode.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfTimeCodeAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfVecAttribute.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfVersion.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfWav.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfXdr.h" />
+    <ClInclude Include="OpenEXR\IlmImf\ImfZipCompressor.h" />
+    <ClInclude Include="OpenEXR\IlmThread\IlmThread.h" />
+    <ClInclude Include="OpenEXR\IlmThread\IlmThreadMutex.h" />
+    <ClInclude Include="OpenEXR\IlmThread\IlmThreadPool.h" />
+    <ClInclude Include="OpenEXR\IlmThread\IlmThreadSemaphore.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathBox.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathBoxAlgo.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathColor.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathColorAlgo.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathEuler.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathExc.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathFrame.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathFrustum.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathFun.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathGL.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathGLU.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathHalfLimits.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathInt64.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathInterval.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathLimits.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathLine.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathLineAlgo.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathMath.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathMatrix.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathMatrixAlgo.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathPlane.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathPlatform.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathQuat.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathRandom.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathRoots.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathShear.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathSphere.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathVec.h" />
+    <ClInclude Include="OpenEXR\Imath\ImathVecAlgo.h" />
+    <ClInclude Include="OpenEXR\OpenEXRConfig.h" />
+    <ClInclude Include="Plugin.h" />
+    <ClInclude Include="Quantizers.h" />
+    <ClInclude Include="ToneMapping.h" />
+    <ClInclude Include="Utilities.h" />
+    <ClInclude Include="ZLib\crc32.h" />
+    <ClInclude Include="ZLib\deflate.h" />
+    <ClInclude Include="ZLib\gzguts.h" />
+    <ClInclude Include="ZLib\inffast.h" />
+    <ClInclude Include="ZLib\inffixed.h" />
+    <ClInclude Include="ZLib\inflate.h" />
+    <ClInclude Include="ZLib\inftrees.h" />
+    <ClInclude Include="ZLib\trees.h" />
+    <ClInclude Include="ZLib\zconf.h" />
+    <ClInclude Include="ZLib\zlib.h" />
+    <ClInclude Include="ZLib\zutil.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DeprecationManager\Deprecated.cpp" />
+    <ClCompile Include="DeprecationManager\DeprecationMgr.cpp" />
+    <ClCompile Include="FreeImageToolkit\Background.cpp" />
+    <ClCompile Include="FreeImageToolkit\BSplineRotate.cpp" />
+    <ClCompile Include="FreeImageToolkit\Channels.cpp" />
+    <ClCompile Include="FreeImageToolkit\ClassicRotate.cpp" />
+    <ClCompile Include="FreeImageToolkit\Colors.cpp" />
+    <ClCompile Include="FreeImageToolkit\CopyPaste.cpp" />
+    <ClCompile Include="FreeImageToolkit\Display.cpp" />
+    <ClCompile Include="FreeImageToolkit\Flip.cpp" />
+    <ClCompile Include="FreeImageToolkit\JPEGTransform.cpp" />
+    <ClCompile Include="FreeImageToolkit\MultigridPoissonSolver.cpp" />
+    <ClCompile Include="FreeImageToolkit\Rescale.cpp" />
+    <ClCompile Include="FreeImageToolkit\Resize.cpp" />
+    <ClCompile Include="FreeImage\BitmapAccess.cpp" />
+    <ClCompile Include="FreeImage\CacheFile.cpp" />
+    <ClCompile Include="FreeImage\ColorLookup.cpp" />
+    <ClCompile Include="FreeImage\Conversion.cpp" />
+    <ClCompile Include="FreeImage\Conversion16_555.cpp" />
+    <ClCompile Include="FreeImage\Conversion16_565.cpp" />
+    <ClCompile Include="FreeImage\Conversion24.cpp" />
+    <ClCompile Include="FreeImage\Conversion32.cpp" />
+    <ClCompile Include="FreeImage\Conversion4.cpp" />
+    <ClCompile Include="FreeImage\Conversion8.cpp" />
+    <ClCompile Include="FreeImage\ConversionFloat.cpp" />
+    <ClCompile Include="FreeImage\ConversionRGB16.cpp" />
+    <ClCompile Include="FreeImage\ConversionRGBF.cpp" />
+    <ClCompile Include="FreeImage\ConversionType.cpp" />
+    <ClCompile Include="FreeImage\ConversionUINT16.cpp" />
+    <ClCompile Include="FreeImage\FreeImage.cpp" />
+    <ClCompile Include="FreeImage\FreeImageC.c" />
+    <ClCompile Include="FreeImage\FreeImageIO.cpp" />
+    <ClCompile Include="FreeImage\GetType.cpp" />
+    <ClCompile Include="FreeImage\Halftoning.cpp" />
+    <ClCompile Include="FreeImage\J2KHelper.cpp" />
+    <ClCompile Include="FreeImage\MemoryIO.cpp" />
+    <ClCompile Include="FreeImage\MNGHelper.cpp" />
+    <ClCompile Include="FreeImage\MultiPage.cpp" />
+    <ClCompile Include="FreeImage\NNQuantizer.cpp" />
+    <ClCompile Include="FreeImage\PixelAccess.cpp" />
+    <ClCompile Include="FreeImage\Plugin.cpp" />
+    <ClCompile Include="FreeImage\PluginBMP.cpp" />
+    <ClCompile Include="FreeImage\PluginCUT.cpp" />
+    <ClCompile Include="FreeImage\PluginDDS.cpp" />
+    <ClCompile Include="FreeImage\PluginEXR.cpp" />
+    <ClCompile Include="FreeImage\PluginG3.cpp" />
+    <ClCompile Include="FreeImage\PluginGIF.cpp" />
+    <ClCompile Include="FreeImage\PluginHDR.cpp" />
+    <ClCompile Include="FreeImage\PluginICO.cpp" />
+    <ClCompile Include="FreeImage\PluginIFF.cpp" />
+    <ClCompile Include="FreeImage\PluginJ2K.cpp" />
+    <ClCompile Include="FreeImage\PluginJNG.cpp" />
+    <ClCompile Include="FreeImage\PluginJP2.cpp" />
+    <ClCompile Include="FreeImage\PluginJPEG.cpp" />
+    <ClCompile Include="FreeImage\PluginKOALA.cpp" />
+    <ClCompile Include="FreeImage\PluginMNG.cpp" />
+    <ClCompile Include="FreeImage\PluginPCD.cpp" />
+    <ClCompile Include="FreeImage\PluginPCX.cpp" />
+    <ClCompile Include="FreeImage\PluginPFM.cpp" />
+    <ClCompile Include="FreeImage\PluginPICT.cpp" />
+    <ClCompile Include="FreeImage\PluginPNG.cpp" />
+    <ClCompile Include="FreeImage\PluginPNM.cpp" />
+    <ClCompile Include="FreeImage\PluginPSD.cpp" />
+    <ClCompile Include="FreeImage\PluginRAS.cpp" />
+    <ClCompile Include="FreeImage\PluginRAW.cpp" />
+    <ClCompile Include="FreeImage\PluginSGI.cpp" />
+    <ClCompile Include="FreeImage\PluginTARGA.cpp" />
+    <ClCompile Include="FreeImage\PluginTIFF.cpp" />
+    <ClCompile Include="FreeImage\PluginWBMP.cpp" />
+    <ClCompile Include="FreeImage\PluginXBM.cpp" />
+    <ClCompile Include="FreeImage\PluginXPM.cpp" />
+    <ClCompile Include="FreeImage\PSDParser.cpp" />
+    <ClCompile Include="FreeImage\TIFFLogLuv.cpp" />
+    <ClCompile Include="FreeImage\tmoColorConvert.cpp" />
+    <ClCompile Include="FreeImage\tmoDrago03.cpp" />
+    <ClCompile Include="FreeImage\tmoFattal02.cpp" />
+    <ClCompile Include="FreeImage\tmoReinhard05.cpp" />
+    <ClCompile Include="FreeImage\ToneMapping.cpp" />
+    <ClCompile Include="FreeImage\WuQuantizer.cpp" />
+    <ClCompile Include="FreeImage\ZLibInterface.cpp" />
+    <ClCompile Include="LibJPEG\jaricom.c" />
+    <ClCompile Include="LibJPEG\jcapimin.c" />
+    <ClCompile Include="LibJPEG\jcapistd.c" />
+    <ClCompile Include="LibJPEG\jcarith.c" />
+    <ClCompile Include="LibJPEG\jccoefct.c" />
+    <ClCompile Include="LibJPEG\jccolor.c" />
+    <ClCompile Include="LibJPEG\jcdctmgr.c" />
+    <ClCompile Include="LibJPEG\jchuff.c" />
+    <ClCompile Include="LibJPEG\jcinit.c" />
+    <ClCompile Include="LibJPEG\jcmainct.c" />
+    <ClCompile Include="LibJPEG\jcmarker.c" />
+    <ClCompile Include="LibJPEG\jcmaster.c" />
+    <ClCompile Include="LibJPEG\jcomapi.c" />
+    <ClCompile Include="LibJPEG\jcparam.c" />
+    <ClCompile Include="LibJPEG\jcprepct.c" />
+    <ClCompile Include="LibJPEG\jcsample.c" />
+    <ClCompile Include="LibJPEG\jctrans.c" />
+    <ClCompile Include="LibJPEG\jdapimin.c" />
+    <ClCompile Include="LibJPEG\jdapistd.c" />
+    <ClCompile Include="LibJPEG\jdarith.c" />
+    <ClCompile Include="LibJPEG\jdatadst.c" />
+    <ClCompile Include="LibJPEG\jdatasrc.c" />
+    <ClCompile Include="LibJPEG\jdcoefct.c" />
+    <ClCompile Include="LibJPEG\jdcolor.c" />
+    <ClCompile Include="LibJPEG\jddctmgr.c" />
+    <ClCompile Include="LibJPEG\jdhuff.c" />
+    <ClCompile Include="LibJPEG\jdinput.c" />
+    <ClCompile Include="LibJPEG\jdmainct.c" />
+    <ClCompile Include="LibJPEG\jdmarker.c" />
+    <ClCompile Include="LibJPEG\jdmaster.c" />
+    <ClCompile Include="LibJPEG\jdmerge.c" />
+    <ClCompile Include="LibJPEG\jdpostct.c" />
+    <ClCompile Include="LibJPEG\jdsample.c" />
+    <ClCompile Include="LibJPEG\jdtrans.c" />
+    <ClCompile Include="LibJPEG\jerror.c" />
+    <ClCompile Include="LibJPEG\jfdctflt.c" />
+    <ClCompile Include="LibJPEG\jfdctfst.c" />
+    <ClCompile Include="LibJPEG\jfdctint.c" />
+    <ClCompile Include="LibJPEG\jidctflt.c" />
+    <ClCompile Include="LibJPEG\jidctfst.c" />
+    <ClCompile Include="LibJPEG\jidctint.c" />
+    <ClCompile Include="LibJPEG\jmemmgr.c" />
+    <ClCompile Include="LibJPEG\jmemnobs.c" />
+    <ClCompile Include="LibJPEG\jquant1.c" />
+    <ClCompile Include="LibJPEG\jquant2.c" />
+    <ClCompile Include="LibJPEG\jutils.c" />
+    <ClCompile Include="LibJPEG\rdbmp.c" />
+    <ClCompile Include="LibJPEG\rdcolmap.c" />
+    <ClCompile Include="LibJPEG\rdgif.c" />
+    <ClCompile Include="LibJPEG\rdppm.c" />
+    <ClCompile Include="LibJPEG\rdrle.c" />
+    <ClCompile Include="LibJPEG\rdswitch.c" />
+    <ClCompile Include="LibJPEG\rdtarga.c" />
+    <ClCompile Include="LibJPEG\transupp.c" />
+    <ClCompile Include="LibJPEG\wrbmp.c" />
+    <ClCompile Include="LibJPEG\wrgif.c" />
+    <ClCompile Include="LibJPEG\wrppm.c" />
+    <ClCompile Include="LibJPEG\wrrle.c" />
+    <ClCompile Include="LibJPEG\wrtarga.c" />
+    <ClCompile Include="LibOpenJPEG\bio.c" />
+    <ClCompile Include="LibOpenJPEG\cidx_manager.c" />
+    <ClCompile Include="LibOpenJPEG\cio.c" />
+    <ClCompile Include="LibOpenJPEG\dwt.c" />
+    <ClCompile Include="LibOpenJPEG\event.c" />
+    <ClCompile Include="LibOpenJPEG\image.c" />
+    <ClCompile Include="LibOpenJPEG\j2k.c" />
+    <ClCompile Include="LibOpenJPEG\j2k_lib.c" />
+    <ClCompile Include="LibOpenJPEG\jp2.c" />
+    <ClCompile Include="LibOpenJPEG\jpt.c" />
+    <ClCompile Include="LibOpenJPEG\mct.c" />
+    <ClCompile Include="LibOpenJPEG\mqc.c" />
+    <ClCompile Include="LibOpenJPEG\openjpeg.c" />
+    <ClCompile Include="LibOpenJPEG\phix_manager.c" />
+    <ClCompile Include="LibOpenJPEG\pi.c" />
+    <ClCompile Include="LibOpenJPEG\ppix_manager.c" />
+    <ClCompile Include="LibOpenJPEG\raw.c" />
+    <ClCompile Include="LibOpenJPEG\t1.c" />
+    <ClCompile Include="LibOpenJPEG\t2.c" />
+    <ClCompile Include="LibOpenJPEG\tcd.c" />
+    <ClCompile Include="LibOpenJPEG\tgt.c" />
+    <ClCompile Include="LibOpenJPEG\thix_manager.c" />
+    <ClCompile Include="LibOpenJPEG\tpix_manager.c" />
+    <ClCompile Include="LibPNG\png.c" />
+    <ClCompile Include="LibPNG\pngerror.c" />
+    <ClCompile Include="LibPNG\pnggccrd.c" />
+    <ClCompile Include="LibPNG\pngget.c" />
+    <ClCompile Include="LibPNG\pngmem.c" />
+    <ClCompile Include="LibPNG\pngpread.c" />
+    <ClCompile Include="LibPNG\pngread.c" />
+    <ClCompile Include="LibPNG\pngrio.c" />
+    <ClCompile Include="LibPNG\pngrtran.c" />
+    <ClCompile Include="LibPNG\pngrutil.c" />
+    <ClCompile Include="LibPNG\pngset.c" />
+    <ClCompile Include="LibPNG\pngtrans.c" />
+    <ClCompile Include="LibPNG\pngvcrd.c" />
+    <ClCompile Include="LibPNG\pngwio.c" />
+    <ClCompile Include="LibPNG\pngwrite.c" />
+    <ClCompile Include="LibPNG\pngwtran.c" />
+    <ClCompile Include="LibPNG\pngwutil.c" />
+    <ClCompile Include="LibRawLite\internal\dcraw_common.cpp" />
+    <ClCompile Include="LibRawLite\internal\dcraw_fileio.cpp" />
+    <ClCompile Include="LibRawLite\internal\demosaic_packs.cpp" />
+    <ClCompile Include="LibRawLite\src\libraw_cxx.cpp" />
+    <ClCompile Include="LibRawLite\src\libraw_c_api.cpp" />
+    <ClCompile Include="LibRawLite\src\libraw_datastream.cpp" />
+    <ClCompile Include="LibTIFF4\tif_aux.c" />
+    <ClCompile Include="LibTIFF4\tif_close.c" />
+    <ClCompile Include="LibTIFF4\tif_codec.c" />
+    <ClCompile Include="LibTIFF4\tif_color.c" />
+    <ClCompile Include="LibTIFF4\tif_compress.c" />
+    <ClCompile Include="LibTIFF4\tif_dir.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="LibTIFF4\tif_dirinfo.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="LibTIFF4\tif_dirread.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="LibTIFF4\tif_dirwrite.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="LibTIFF4\tif_dumpmode.c" />
+    <ClCompile Include="LibTIFF4\tif_error.c" />
+    <ClCompile Include="LibTIFF4\tif_extension.c" />
+    <ClCompile Include="LibTIFF4\tif_fax3.c" />
+    <ClCompile Include="LibTIFF4\tif_fax3sm.c" />
+    <ClCompile Include="LibTIFF4\tif_flush.c" />
+    <ClCompile Include="LibTIFF4\tif_getimage.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="LibTIFF4\tif_jbig.c" />
+    <ClCompile Include="LibTIFF4\tif_jpeg.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="LibTIFF4\tif_jpeg_12.c" />
+    <ClCompile Include="LibTIFF4\tif_luv.c" />
+    <ClCompile Include="LibTIFF4\tif_lzma.c" />
+    <ClCompile Include="LibTIFF4\tif_lzw.c" />
+    <ClCompile Include="LibTIFF4\tif_next.c" />
+    <ClCompile Include="LibTIFF4\tif_ojpeg.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="LibTIFF4\tif_open.c" />
+    <ClCompile Include="LibTIFF4\tif_packbits.c" />
+    <ClCompile Include="LibTIFF4\tif_pixarlog.c" />
+    <ClCompile Include="LibTIFF4\tif_predict.c" />
+    <ClCompile Include="LibTIFF4\tif_print.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="LibTIFF4\tif_read.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="LibTIFF4\tif_stream.cxx" />
+    <ClCompile Include="LibTIFF4\tif_strip.c" />
+    <ClCompile Include="LibTIFF4\tif_swab.c" />
+    <ClCompile Include="LibTIFF4\tif_thunder.c" />
+    <ClCompile Include="LibTIFF4\tif_tile.c" />
+    <ClCompile Include="LibTIFF4\tif_version.c" />
+    <ClCompile Include="LibTIFF4\tif_warning.c" />
+    <ClCompile Include="LibTIFF4\tif_write.c" />
+    <ClCompile Include="LibTIFF4\tif_zip.c" />
+    <ClCompile Include="Metadata\Exif.cpp" />
+    <ClCompile Include="Metadata\FIRational.cpp" />
+    <ClCompile Include="Metadata\FreeImageTag.cpp" />
+    <ClCompile Include="Metadata\IPTC.cpp" />
+    <ClCompile Include="Metadata\TagConversion.cpp" />
+    <ClCompile Include="Metadata\TagLib.cpp" />
+    <ClCompile Include="Metadata\XTIFF.cpp" />
+    <ClCompile Include="OpenEXR\Half\half.cpp" />
+    <ClCompile Include="OpenEXR\Half\toFloat.cpp" />
+    <ClCompile Include="OpenEXR\Iex\IexBaseExc.cpp" />
+    <ClCompile Include="OpenEXR\Iex\IexThrowErrnoExc.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfAcesFile.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfB44Compressor.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfBoxAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfChannelList.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfChannelListAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfChromaticities.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfChromaticitiesAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfCompressionAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfCompressor.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfConvert.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfCRgbaFile.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfDoubleAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfEnvmap.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfEnvmapAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfFloatAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfFrameBuffer.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfFramesPerSecond.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfHeader.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfHuf.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfInputFile.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfIntAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfIO.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfKeyCode.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfKeyCodeAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfLineOrderAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfLut.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfMatrixAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfMisc.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfMultiView.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfOpaqueAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfOutputFile.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfPizCompressor.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfPreviewImage.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfPreviewImageAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfPxr24Compressor.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfRational.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfRationalAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfRgbaFile.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfRgbaYca.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfRleCompressor.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfScanLineInputFile.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfStandardAttributes.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfStdIO.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfStringAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfStringVectorAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfTestFile.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfThreading.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfTileDescriptionAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfTiledInputFile.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfTiledMisc.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfTiledOutputFile.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfTiledRgbaFile.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfTileOffsets.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfTimeCode.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfTimeCodeAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfVecAttribute.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfVersion.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfWav.cpp" />
+    <ClCompile Include="OpenEXR\IlmImf\ImfZipCompressor.cpp" />
+    <ClCompile Include="OpenEXR\IlmThread\IlmThread.cpp" />
+    <ClCompile Include="OpenEXR\IlmThread\IlmThreadMutex.cpp" />
+    <ClCompile Include="OpenEXR\IlmThread\IlmThreadMutexPosix.cpp" />
+    <ClCompile Include="OpenEXR\IlmThread\IlmThreadPool.cpp" />
+    <ClCompile Include="OpenEXR\IlmThread\IlmThreadPosix.cpp" />
+    <ClCompile Include="OpenEXR\IlmThread\IlmThreadSemaphore.cpp" />
+    <ClCompile Include="OpenEXR\IlmThread\IlmThreadSemaphorePosix.cpp" />
+    <ClCompile Include="OpenEXR\IlmThread\IlmThreadSemaphorePosixCompat.cpp" />
+    <ClCompile Include="OpenEXR\Imath\ImathBox.cpp" />
+    <ClCompile Include="OpenEXR\Imath\ImathColorAlgo.cpp" />
+    <ClCompile Include="OpenEXR\Imath\ImathFun.cpp" />
+    <ClCompile Include="OpenEXR\Imath\ImathMatrixAlgo.cpp" />
+    <ClCompile Include="OpenEXR\Imath\ImathRandom.cpp" />
+    <ClCompile Include="OpenEXR\Imath\ImathShear.cpp" />
+    <ClCompile Include="OpenEXR\Imath\ImathVec.cpp" />
+    <ClCompile Include="ZLib\adler32.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="ZLib\compress.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="ZLib\crc32.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="ZLib\deflate.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="ZLib\gzclose.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="ZLib\gzlib.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="ZLib\gzread.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="ZLib\gzwrite.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="ZLib\infback.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="ZLib\inffast.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="ZLib\inflate.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="ZLib\inftrees.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="ZLib\trees.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="ZLib\uncompr.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="ZLib\zutil.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LibJPEG\jmemdosa.asm" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{905F115C-A536-3F9A-8385-C51C1EBD4595}</ProjectGuid>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>FreeImage</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\Lib</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\Temp/$(Configuration)/$(ProjectName)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">FreeImage_d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\Lib</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\Temp/$(Configuration)/$(ProjectName)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">FreeImage</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">FreeImage.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">FreeImage</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">FreeImage.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">FreeImage</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;.\FreeImageToolkit;.\LibJPEG;.\LibMNG;.\LibOpenJPEG;.\LibPNG;.\LibRawLite;.\LibTIFF;.\OpenEXR;.\OpenEXR\Half;.\OpenEXR\Iex;.\OpenEXR\IlmImf;.\OpenEXR\IlmThread;.\OpenEXR\Imath;.\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;.\FreeImageToolkit;.\LibJPEG;.\LibMNG;.\LibOpenJPEG;.\LibPNG;.\LibRawLite;.\LibTIFF;.\OpenEXR;.\OpenEXR\Half;.\OpenEXR\Iex;.\OpenEXR\IlmImf;.\OpenEXR\IlmThread;.\OpenEXR\Imath;.\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
