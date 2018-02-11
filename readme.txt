@@ -1,8 +1,5 @@
-﻿    English 
-	
+﻿English 
 	Dependencies of : https://github.com/RamilGauss/MMO-Framework
 
-//------------------------------------------------------------------------------------------
-    Russian
-    
+Russian
 	Зависимости проекта: https://github.com/RamilGauss/MMO-Framework
