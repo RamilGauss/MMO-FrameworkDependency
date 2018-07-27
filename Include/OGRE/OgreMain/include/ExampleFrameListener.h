@@ -35,6 +35,8 @@ D:        Step right
 -----------------------------------------------------------------------------
 */
 
+#if 0
+
 #ifndef __ExampleFrameListener_H__
 #define __ExampleFrameListener_H__
 
@@ -49,7 +51,8 @@ D:        Step right
 //Use this define to signify OIS will be used as a DLL
 //(so that dll import/export macros are in effect)
 #define OIS_DYNAMIC_LIB
-#include <OIS/OIS.h>
+#include <OIS.h>
+//### #include <OIS/OIS.h>
 
 using namespace Ogre;
 
@@ -513,5 +516,7 @@ protected:
 	OIS::Keyboard* mKeyboard;
 	OIS::JoyStick* mJoy;
 };
+
+#endif
 
 #endif
