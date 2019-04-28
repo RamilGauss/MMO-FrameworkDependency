@@ -637,7 +637,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{905F115C-A536-3F9A-8385-C51C1EBD4595}</ProjectGuid>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>Win32</Platform>
     <ProjectName>FreeImage</ProjectName>
