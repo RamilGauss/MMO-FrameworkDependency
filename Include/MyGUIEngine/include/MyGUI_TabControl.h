@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		01/2008
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_TAB_CONTROL_H__
-#define __MYGUI_TAB_CONTROL_H__
+#ifndef MYGUI_TAB_CONTROL_H_
+#define MYGUI_TAB_CONTROL_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_Widget.h"
@@ -71,18 +56,15 @@ namespace MyGUI
 		typedef std::vector<TabItemInfo> VectorTabItemInfo;
 
 		//! @copydoc Widget::setPosition(const IntPoint& _value)
-		virtual void setPosition(const IntPoint& _value);
+		void setPosition(const IntPoint& _value) override;
 		//! @copydoc Widget::setSize(const IntSize& _value)
-		virtual void setSize(const IntSize& _value);
+		void setSize(const IntSize& _value) override;
 		//! @copydoc Widget::setCoord(const IntCoord& _value)
-		virtual void setCoord(const IntCoord& _value);
+		void setCoord(const IntCoord& _value) override;
 
-		/** @copydoc Widget::setPosition(int _left, int _top) */
-		void setPosition(int _left, int _top);
-		/** @copydoc Widget::setSize(int _width, int _height) */
-		void setSize(int _width, int _height);
-		/** @copydoc Widget::setCoord(int _left, int _top, int _width, int _height) */
-		void setCoord(int _left, int _top, int _width, int _height);
+		using Widget::setPosition;
+		using Widget::setSize;
+		using Widget::setCoord;
 
 		//------------------------------------------------------------------------------//
 		// манипуляции айтемами
@@ -236,21 +218,20 @@ namespace MyGUI
 			@param _sender widget that called this event
 			@param _index Index of selected sheet
 		*/
-		EventPair<EventHandle_WidgetSizeT, EventHandle_TabPtrSizeT>
-			eventTabChangeSelect;
+		EventPair<EventHandle_WidgetSizeT, EventHandle_TabPtrSizeT> eventTabChangeSelect;
 
 		/*internal:*/
 		// IItemContainer impl
-		virtual size_t _getItemCount();
-		virtual void _addItem(const MyGUI::UString& _name);
-		virtual void _removeItemAt(size_t _index);
-		virtual Widget* _getItemAt(size_t _index);
-		virtual void _setItemNameAt(size_t _index, const UString& _name);
-		virtual const UString& _getItemNameAt(size_t _index);
+		size_t _getItemCount() override;
+		void _addItem(const MyGUI::UString& _name) override;
+		void _removeItemAt(size_t _index) override;
+		Widget* _getItemAt(size_t _index) override;
+		void _setItemNameAt(size_t _index, const UString& _name) override;
+		const UString& _getItemNameAt(size_t _index) override;
 
 	protected:
-		virtual void initialiseOverride();
-		virtual void shutdownOverride();
+		void initialiseOverride() override;
+		void shutdownOverride() override;
 
 		void updateBar();
 
@@ -268,9 +249,9 @@ namespace MyGUI
 		// вкладка при удалении уведомляет таб
 		void _notifyDeleteItem(TabItem* _item);
 
-		virtual void onWidgetCreated(Widget* _widget);
+		void onWidgetCreated(Widget* _widget) override;
 
-		virtual void setPropertyOverride(const std::string& _key, const std::string& _value);
+		void setPropertyOverride(const std::string& _key, const std::string& _value) override;
 
 	private:
 		void actionWidgetHide(Widget* _widget, ControllerItem* _controller);
@@ -319,4 +300,4 @@ namespace MyGUI
 
 } // namespace MyGUI
 
-#endif // __MYGUI_TAB_CONTROL_H__
+#endif // MYGUI_TAB_CONTROL_H_

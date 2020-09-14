@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		06/2009
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_BITWISE_H__
-#define __MYGUI_BITWISE_H__
+#ifndef MYGUI_BITWISE_H_
+#define MYGUI_BITWISE_H_
 
 #include "MyGUI_Prerequest.h"
 
@@ -33,7 +18,7 @@ namespace MyGUI
 		/** Returns the closest power-of-two number greater or equal to value.
 		*/
 		template<typename Type>
-		static MYGUI_FORCEINLINE Type firstPO2From(Type _value)
+		static inline Type firstPO2From(Type _value)
 		{
 			--_value;
 			_value |= _value >> 16;
@@ -47,7 +32,7 @@ namespace MyGUI
 
 		/** Determines whether the number is power-of-two or not. */
 		template<typename Type>
-		static MYGUI_FORCEINLINE bool isPO2(Type _value)
+		static inline bool isPO2(Type _value)
 		{
 			return (_value & (_value - 1)) == 0;
 		}
@@ -56,7 +41,7 @@ namespace MyGUI
 		remove right-hand zeros.
 		*/
 		template<typename Type>
-		static MYGUI_FORCEINLINE size_t getBitShift(Type _mask)
+		static inline size_t getBitShift(Type _mask)
 		{
 			if (_mask == 0)
 				return 0;
@@ -73,4 +58,4 @@ namespace MyGUI
 
 } // namespace MyGUI
 
-#endif // __MYGUI_BITWISE_H__
+#endif // MYGUI_BITWISE_H_

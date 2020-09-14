@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		09/2009
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_EDIT_TEXT_H__
-#define __MYGUI_EDIT_TEXT_H__
+#ifndef MYGUI_EDIT_TEXT_H_
+#define MYGUI_EDIT_TEXT_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_XmlDocument.h"
@@ -44,90 +29,91 @@ namespace MyGUI
 
 	public:
 		EditText();
-		virtual ~EditText();
 
-		virtual void setVisible(bool _value);
+		void setVisible(bool _value) override;
 
 		// обновляет все данные связанные с тектом
 		virtual void updateRawData();
 
 		// метод для отрисовки себя
-		virtual void doRender();
+		void doRender() override;
 
-		void setCaption(const UString& _value);
-		const UString& getCaption() const;
+		void setCaption(const UString& _value) override;
+		const UString& getCaption() const override;
 
-		void setTextColour(const Colour& _value);
-		const Colour& getTextColour() const;
+		void setTextColour(const Colour& _value)override;
+		const Colour& getTextColour() const override;
 
-		void setAlpha(float _value);
-		float getAlpha() const;
+		void setAlpha(float _value) override;
 
-		virtual void setFontName(const std::string& _value);
-		virtual const std::string& getFontName() const;
+		void setFontName(const std::string& _value) override;
+		const std::string& getFontName() const override;
 
-		virtual void setFontHeight(int _value);
-		virtual int getFontHeight() const;
+		void setFontHeight(int _value) override;
+		int getFontHeight() const override;
 
-		virtual void createDrawItem(ITexture* _texture, ILayerNode* _node);
-		virtual void destroyDrawItem();
+		void createDrawItem(ITexture* _texture, ILayerNode* _node) override;
+		void destroyDrawItem() override;
 
-		virtual void setTextAlign(Align _value);
-		virtual Align getTextAlign() const;
+		void setTextAlign(Align _value) override;
+		Align getTextAlign() const override;
 
-		virtual size_t getTextSelectionStart() const;
-		virtual size_t getTextSelectionEnd() const;
-		virtual void setTextSelection(size_t _start, size_t _end);
+		size_t getTextSelectionStart() const override;
+		size_t getTextSelectionEnd() const override;
+		void setTextSelection(size_t _start, size_t _end) override;
 
-		virtual bool getSelectBackground() const;
-		virtual void setSelectBackground(bool _normal);
+		bool getSelectBackground() const override;
+		void setSelectBackground(bool _normal) override;
 
-		virtual bool isVisibleCursor() const;
-		virtual void setVisibleCursor(bool _value);
+		bool isVisibleCursor() const override;
+		void setVisibleCursor(bool _value) override;
 
 		/** Get invert selected text color property. */
-		virtual bool getInvertSelected() const;
+		bool getInvertSelected() const override;
 		/** Enable or disable inverting color of selected text.\n
 			Enabled (true) by default.
 		*/
-		virtual void setInvertSelected(bool _value);
+		void setInvertSelected(bool _value) override;
 
-		virtual size_t getCursorPosition() const;
-		virtual void setCursorPosition(size_t _index);
+		size_t getCursorPosition() const override;
+		void setCursorPosition(size_t _index) override;
 
-		virtual IntSize getTextSize();
+		IntSize getTextSize() override;
 
 		// устанавливает смещение текста в пикселях
-		virtual void setViewOffset(const IntPoint& _point);
-		virtual IntPoint getViewOffset() const;
+		void setViewOffset(const IntPoint& _point) override;
+		IntPoint getViewOffset() const override;
 
 		// возвращает положение курсора по произвольному положению
-		virtual size_t getCursorPosition(const IntPoint& _point);
+		size_t getCursorPosition(const IntPoint& _point) override;
 
 		// возвращает положение курсора в обсолютных координатах
-		virtual IntCoord getCursorCoord(size_t _position);
+		IntCoord getCursorCoord(size_t _position) override;
 
-		virtual bool getShadow() const;
-		virtual void setShadow(bool _value);
+		bool getShadow() const override;
+		void setShadow(bool _value) override;
 
-		virtual void setShiftText(bool _shift);
+		void setShiftText(bool _shift) override;
 
-		virtual void setWordWrap(bool _value);
+		void setWordWrap(bool _value) override;
 
-		virtual void setStateData(IStateInfo* _data);
+		void setStateData(IStateInfo* _data) override;
 
-		virtual void setShadowColour(const Colour& _value);
-		virtual const Colour& getShadowColour() const;
+		void setShadowColour(const Colour& _value) override;
+		const Colour& getShadowColour() const override;
 
 		/*internal:*/
-		virtual void _updateView();
-		virtual void _correctView();
+		void _updateView() override;
+		void _correctView() override;
 
-		virtual void _setAlign(const IntSize& _oldsize);
+		void _setAlign(const IntSize& _oldsize) override;
+
+		virtual const VectorLineInfo& getLineInfo() const;
 
 	private:
 		void _setTextColour(const Colour& _value);
 		void checkVertexSize();
+		unsigned int getMixedNativeAlpha(float secondAlpha);
 
 		void drawQuad(
 			Vertex*& _vertex,
@@ -149,7 +135,6 @@ namespace MyGUI
 		bool mEmptyView;
 		uint32 mCurrentColourNative;
 		uint32 mInverseColourNative;
-		uint32 mCurrentAlphaNative;
 		uint32 mShadowColourNative;
 		IntCoord mCurrentCoord;
 
@@ -191,4 +176,4 @@ namespace MyGUI
 
 } // namespace MyGUI
 
-#endif // __MYGUI_EDIT_TEXT_H__
+#endif // MYGUI_EDIT_TEXT_H_

@@ -5,6 +5,14 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
@@ -13,9 +21,17 @@
       <Configuration>MinSizeRel</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="RelWithDebInfo|Win32">
       <Configuration>RelWithDebInfo</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
@@ -426,19 +442,27 @@
     <ClCompile Include="LibTIFF4\tif_compress.c" />
     <ClCompile Include="LibTIFF4\tif_dir.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="LibTIFF4\tif_dirinfo.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="LibTIFF4\tif_dirread.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="LibTIFF4\tif_dirwrite.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="LibTIFF4\tif_dumpmode.c" />
     <ClCompile Include="LibTIFF4\tif_error.c" />
@@ -448,12 +472,16 @@
     <ClCompile Include="LibTIFF4\tif_flush.c" />
     <ClCompile Include="LibTIFF4\tif_getimage.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="LibTIFF4\tif_jbig.c" />
     <ClCompile Include="LibTIFF4\tif_jpeg.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="LibTIFF4\tif_jpeg_12.c" />
     <ClCompile Include="LibTIFF4\tif_luv.c" />
@@ -462,7 +490,9 @@
     <ClCompile Include="LibTIFF4\tif_next.c" />
     <ClCompile Include="LibTIFF4\tif_ojpeg.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="LibTIFF4\tif_open.c" />
     <ClCompile Include="LibTIFF4\tif_packbits.c" />
@@ -470,11 +500,15 @@
     <ClCompile Include="LibTIFF4\tif_predict.c" />
     <ClCompile Include="LibTIFF4\tif_print.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="LibTIFF4\tif_read.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="LibTIFF4\tif_stream.cxx" />
     <ClCompile Include="LibTIFF4\tif_strip.c" />
@@ -573,63 +607,93 @@
     <ClCompile Include="OpenEXR\Imath\ImathVec.cpp" />
     <ClCompile Include="ZLib\adler32.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="ZLib\compress.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="ZLib\crc32.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="ZLib\deflate.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="ZLib\gzclose.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="ZLib\gzlib.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="ZLib\gzread.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="ZLib\gzwrite.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="ZLib\infback.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="ZLib\inffast.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="ZLib\inflate.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="ZLib\inftrees.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="ZLib\trees.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="ZLib\uncompr.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="ZLib\zutil.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -637,7 +701,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{905F115C-A536-3F9A-8385-C51C1EBD4595}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>Win32</Platform>
     <ProjectName>FreeImage</ProjectName>
@@ -647,19 +711,39 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
@@ -673,22 +757,38 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\Lib</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\Temp/$(Configuration)/$(ProjectName)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)..\..\Lib</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)..\..\Temp/$(Configuration)/$(ProjectName)\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">FreeImage_d</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">FreeImage_d</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\Lib</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\Temp/$(Configuration)/$(ProjectName)\</IntDir>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)..\..\Lib</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)..\..\Temp/$(Configuration)/$(ProjectName)\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">FreeImage</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">FreeImage</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">FreeImage.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">FreeImage</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">FreeImage</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">FreeImage.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">FreeImage</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">FreeImage</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)..\..\Lib\</OutDir>
+    <IntDir>$(SolutionDir)..\..\Temp/$(Configuration)/$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)..\..\Lib\</OutDir>
+    <IntDir>$(SolutionDir)..\..\Temp/$(Configuration)/$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -721,6 +821,39 @@
     </Midl>
     <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;.\FreeImageToolkit;.\LibJPEG;.\LibMNG;.\LibOpenJPEG;.\LibPNG;.\LibRawLite;.\LibTIFF;.\OpenEXR;.\OpenEXR\Half;.\OpenEXR\Iex;.\OpenEXR\IlmImf;.\OpenEXR\IlmThread;.\OpenEXR\Imath;.\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X64</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -756,6 +889,39 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;.\FreeImageToolkit;.\LibJPEG;.\LibMNG;.\LibOpenJPEG;.\LibPNG;.\LibRawLite;.\LibTIFF;.\OpenEXR;.\OpenEXR\Half;.\OpenEXR\Iex;.\OpenEXR\IlmImf;.\OpenEXR\IlmThread;.\OpenEXR\Imath;.\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
     <ClCompile>
       <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -789,7 +955,72 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINVER=0x0500;OPJ_STATIC;LIBRAW_NODLL;LIBRAW_LIBRARY_BUILD;FREEIMAGE_LIB;NO_LCMS;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\FreeImageToolkit;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibMNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibOpenJPEG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibPNG;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibRawLite;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\LibTIFF;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Half;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Iex;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmImf;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\IlmThread;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\OpenEXR\Imath;D:\Soft\Development\OGRE\OGRE_dep\src\FreeImage\Source\ZLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>

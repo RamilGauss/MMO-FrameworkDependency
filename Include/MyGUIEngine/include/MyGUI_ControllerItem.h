@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		01/2008
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_CONTROLLER_ITEM_H__
-#define __MYGUI_CONTROLLER_ITEM_H__
+#ifndef MYGUI_CONTROLLER_ITEM_H_
+#define MYGUI_CONTROLLER_ITEM_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_WidgetDefines.h"
@@ -33,7 +18,7 @@ namespace MyGUI
 
 	class ControllerItem;
 
-	typedef delegates::CMultiDelegate1<Widget*> EventHandle_WidgetPtr;
+	using EventHandle_WidgetPtr = delegates::CMultiDelegate1<Widget*>;
 	typedef delegates::CMultiDelegate2<Widget*, ControllerItem*> EventHandle_WidgetPtrControllerItemPtr;
 
 	/** Base interface for controllers */
@@ -43,7 +28,7 @@ namespace MyGUI
 		MYGUI_RTTI_DERIVED( ControllerItem )
 
 	public:
-		virtual ~ControllerItem() { }
+		~ControllerItem() override = default;
 
 		virtual void prepareItem(Widget* _widget) = 0;
 		virtual bool addTime(Widget* _widget, float _time) = 0;
@@ -51,28 +36,25 @@ namespace MyGUI
 		virtual void setProperty(const std::string& _key, const std::string& _value) { }
 
 		/** Event : Before controller started working.\n
-			signature : void method(MyGUI::Widget* _sender, ControllerItem* _controller)\n
+			signature : void method(MyGUI::Widget* _sender, MyGUI::ControllerItem* _controller)\n
 			@param _sender widget under control
 		*/
-		EventPairAddParameter<EventHandle_WidgetPtr, EventHandle_WidgetPtrControllerItemPtr>
-			eventPreAction;
+		EventPairAddParameter<EventHandle_WidgetPtr, EventHandle_WidgetPtrControllerItemPtr> eventPreAction;
 
 		/** Event : Controller updated (called every frame).\n
-			signature : void method(MyGUI::Widget* _sender, ControllerItem* _controller)\n
+			signature : void method(MyGUI::Widget* _sender, MyGUI::ControllerItem* _controller)\n
 			@param _sender widget under control
 		*/
-		EventPairAddParameter<EventHandle_WidgetPtr, EventHandle_WidgetPtrControllerItemPtr>
-			eventUpdateAction;
+		EventPairAddParameter<EventHandle_WidgetPtr, EventHandle_WidgetPtrControllerItemPtr> eventUpdateAction;
 
 		/** Event : After controller finished working.\n
-			signature : void method(MyGUI::Widget* _sender, ControllerItem* _controller)\n
+			signature : void method(MyGUI::Widget* _sender, MyGUI::ControllerItem* _controller)\n
 			@param _sender widget under control
 		*/
-		EventPairAddParameter<EventHandle_WidgetPtr, EventHandle_WidgetPtrControllerItemPtr>
-			eventPostAction;
+		EventPairAddParameter<EventHandle_WidgetPtr, EventHandle_WidgetPtrControllerItemPtr> eventPostAction;
 
 	};
 
 } // namespace MyGUI
 
-#endif // __MYGUI_CONTROLLER_ITEM_H__
+#endif // MYGUI_CONTROLLER_ITEM_H_

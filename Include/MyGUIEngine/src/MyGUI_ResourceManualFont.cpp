@@ -1,24 +1,9 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		06/2009
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_ResourceManualFont.h"
 #include "MyGUI_SkinManager.h"
@@ -32,10 +17,6 @@ namespace MyGUI
 		mDefaultHeight(0),
 		mSubstituteGlyphInfo(nullptr),
 		mTexture(nullptr)
-	{
-	}
-
-	ResourceManualFont::~ResourceManualFont()
 	{
 	}
 
@@ -113,15 +94,25 @@ namespace MyGUI
 
 							float advance(utility::parseValue<float>(element->findAttribute("advance")));
 							FloatPoint bearing(utility::parseValue<FloatPoint>(element->findAttribute("bearing")));
+
+							// texture coordinates
 							FloatCoord coord(utility::parseValue<FloatCoord>(element->findAttribute("coord")));
 
+							// glyph size, default to texture coordinate size
+							std::string sizeString;
+							FloatSize size(coord.width, coord.height);
+							if (element->findAttribute("size", sizeString))
+							{
+								size = utility::parseValue<FloatSize>(sizeString);
+							}
+
 							if (advance == 0.0f)
-								advance = coord.width;
+								advance = size.width;
 
 							GlyphInfo& glyphInfo = mCharMap.insert(CharMap::value_type(id, GlyphInfo(
 								id,
-								coord.width,
-								coord.height,
+								size.width,
+								size.height,
 								advance,
 								bearing.left,
 								bearing.top,
@@ -130,7 +121,7 @@ namespace MyGUI
 									coord.top / textureHeight,
 									coord.right() / textureWidth,
 									coord.bottom() / textureHeight)
-							))).first->second;
+								))).first->second;
 
 							if (id == FontCodeType::NotDefined)
 								mSubstituteGlyphInfo = &glyphInfo;
@@ -149,6 +140,32 @@ namespace MyGUI
 	int ResourceManualFont::getDefaultHeight()
 	{
 		return mDefaultHeight;
+	}
+
+	void ResourceManualFont::setSource(const std::string& value)
+	{
+		mTexture = nullptr;
+		mSource = value;
+		loadTexture();
+	}
+
+	void ResourceManualFont::setTexture(ITexture *texture)
+	{
+		mTexture = texture;
+		mSource.clear();
+	}
+
+	void ResourceManualFont::setDefaultHeight(int value)
+	{
+		mDefaultHeight = value;
+	}
+
+	void ResourceManualFont::addGlyphInfo(Char id, const GlyphInfo& info)
+	{
+		GlyphInfo& inserted = mCharMap.insert(CharMap::value_type(id, info)).first->second;
+
+		if (id == FontCodeType::NotDefined)
+			mSubstituteGlyphInfo = &inserted;
 	}
 
 } // namespace MyGUI

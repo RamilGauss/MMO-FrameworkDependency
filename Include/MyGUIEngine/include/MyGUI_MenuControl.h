@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		11/2008
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_MENU_CONTROL_H__
-#define __MYGUI_MENU_CONTROL_H__
+#ifndef MYGUI_MENU_CONTROL_H_
+#define MYGUI_MENU_CONTROL_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_Types.h"
@@ -85,7 +70,7 @@ namespace MyGUI
 
 	public:
 		/** @copydoc Widget::setVisible */
-		virtual void setVisible(bool _value);
+		void setVisible(bool _value) override;
 
 		/** Hide or show Menu smooth */
 		void setVisibleSmooth(bool _value);
@@ -258,15 +243,13 @@ namespace MyGUI
 			@param _sender widget that called this event
 			@param _item Selected item
 		*/
-		EventHandle_MenuCtrlPtrMenuItemPtr
-			eventMenuCtrlAccept;
+		EventHandle_MenuCtrlPtrMenuItemPtr eventMenuCtrlAccept;
 
 		/** Event : Menu was closed by select or focus change.\n
 			signature : void method(MyGUI::MenuControl* _sender)\n
 			@param _sender widget that called this event
 		*/
-		EventHandle_MenuCtrlPtr
-			eventMenuCtrlClose;
+		EventHandle_MenuCtrlPtr eventMenuCtrlClose;
 
 
 		/*internal:*/
@@ -276,26 +259,26 @@ namespace MyGUI
 		void _wrapItemChild(MenuItem* _item, MenuControl* _widget);
 
 		// IItemContainer impl
-		virtual size_t _getItemCount();
-		virtual void _addItem(const MyGUI::UString& _name);
-		virtual void _removeItemAt(size_t _index);
-		virtual Widget* _getItemAt(size_t _index);
-		virtual void _setItemNameAt(size_t _index, const UString& _name);
-		virtual const UString& _getItemNameAt(size_t _index);
-		virtual void _setItemSelected(IItem* _item);
+		size_t _getItemCount() override;
+		void _addItem(const MyGUI::UString& _name) override;
+		void _removeItemAt(size_t _index) override;
+		Widget* _getItemAt(size_t _index) override;
+		void _setItemNameAt(size_t _index, const UString& _name) override;
+		const UString& _getItemNameAt(size_t _index) override;
+		void _setItemSelected(IItem* _item) override;
 
 		void _updateItems(size_t _index);
 		void _updateSizeForEmpty();
 
 	protected:
-		virtual void initialiseOverride();
-		virtual void shutdownOverride();
+		void initialiseOverride() override;
+		void shutdownOverride() override;
 
-		virtual void onKeyChangeRootFocus(bool _focus);
+		void onKeyChangeRootFocus(bool _focus) override;
 
-		virtual void onWidgetCreated(Widget* _widget);
+		void onWidgetCreated(Widget* _widget) override;
 
-		virtual void setPropertyOverride(const std::string& _key, const std::string& _value);
+		void setPropertyOverride(const std::string& _key, const std::string& _value) override;
 
 	private:
 		void notifyRootKeyChangeFocus(Widget* _sender, bool _focus);
@@ -316,8 +299,6 @@ namespace MyGUI
 		void _wrapItem(MenuItem* _item, size_t _index, const UString& _name, MenuItemType _type, const std::string& _id, Any _data);
 
 		ControllerFadeAlpha* createControllerFadeAlpha(float _alpha, float _coef, bool _enable);
-
-		Widget* _getClientWidget();
 
 		void _setItemChildVisibleAt(size_t _index, bool _visible, bool _smooth);
 
@@ -349,10 +330,9 @@ namespace MyGUI
 		bool mAnimateSmooth;
 
 		bool mChangeChildSkin;
-		Widget* mClient;
 		bool mInternalCreateChild;
 	};
 
 } // namespace MyGUI
 
-#endif // __MYGUI_MENU_CONTROL_H__
+#endif // MYGUI_MENU_CONTROL_H_

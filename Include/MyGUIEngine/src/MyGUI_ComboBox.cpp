@@ -1,24 +1,9 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		12/2007
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_ComboBox.h"
 #include "MyGUI_ControllerManager.h"
@@ -74,6 +59,8 @@ namespace MyGUI
 
 		if (mList != nullptr)
 		{
+			mList->setActivateOnClick(true);
+
 			mList->setVisible(false);
 			mList->eventKeyLostFocus += newDelegate(this, &ComboBox::notifyListLostFocus);
 			mList->eventListSelectAccept += newDelegate(this, &ComboBox::notifyListSelectAccept);
@@ -85,13 +72,13 @@ namespace MyGUI
 		}
 
 		// подписываем дочерние классы на скролл
-		if (mClient != nullptr)
+		if (mScrollViewClient != nullptr)
 		{
-			mClient->eventMouseWheel += newDelegate(this, &ComboBox::notifyMouseWheel);
-			mClient->eventMouseButtonPressed += newDelegate(this, &ComboBox::notifyMousePressed);
+			mScrollViewClient->eventMouseWheel += newDelegate(this, &ComboBox::notifyMouseWheel);
+			mScrollViewClient->eventMouseButtonPressed += newDelegate(this, &ComboBox::notifyMousePressed);
 
-			mClient->setNeedToolTip(true);
-			mClient->eventToolTip += newDelegate(this, &ComboBox::notifyToolTip);
+			mScrollViewClient->setNeedToolTip(true);
+			mScrollViewClient->eventToolTip += newDelegate(this, &ComboBox::notifyToolTip);
 		}
 
 		// подписываемся на изменения текста
@@ -102,7 +89,6 @@ namespace MyGUI
 	{
 		mList = nullptr;
 		mButton = nullptr;
-		mClient = nullptr;
 
 		Base::shutdownOverride();
 	}
@@ -132,7 +118,7 @@ namespace MyGUI
 				return;
 
 			// в режиме дропа все окна учавствуют
-			if (mModeDrop && focus == mClient)
+			if (mModeDrop && focus == mScrollViewClient)
 				return;
 		}
 
@@ -282,6 +268,8 @@ namespace MyGUI
 		if (mList->getItemCount() == 0)
 			return;
 
+		if (mListShow)
+			return;
 		mListShow = true;
 
 		IntCoord coord = calculateListPosition();
@@ -308,6 +296,8 @@ namespace MyGUI
 
 	void ComboBox::hideList()
 	{
+		if (!mListShow)
+			return;
 		mListShow = false;
 
 		if (mShowSmooth)
@@ -600,13 +590,6 @@ namespace MyGUI
 		Base::_resetContainer(_update);
 		if (mList != nullptr)
 			mList->_resetContainer(_update);
-	}
-
-	void ComboBox::baseUpdateEnable()
-	{
-		Base::baseUpdateEnable();
-		if (mButton != nullptr)
-			mButton->setEnabled(getEnabled());
 	}
 
 } // namespace MyGUI

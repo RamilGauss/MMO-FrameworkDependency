@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Alexander Ptakhin
-	@date		01/2009
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_CANVAS_H__
-#define __MYGUI_CANVAS_H__
+#ifndef MYGUI_CANVAS_H_
+#define MYGUI_CANVAS_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_Widget.h"
@@ -71,8 +56,8 @@ namespace MyGUI
 				@remarks
 				The size specified at creation of the texture increases to nearest power of two and doesn't change any more. Texture is always stretched on all widget.
 			*/
-			// Размер указаный при создании текстуры увеличиваеться до степени двойки и больше не меняется.
-			// Текстура всегда растягиваеться во весь виджет.
+			// Р Р°Р·РјРµСЂ СѓРєР°Р·Р°РЅС‹Р№ РїСЂРё СЃРѕР·РґР°РЅРёРё С‚РµРєСЃС‚СѓСЂС‹ СѓРІРµР»РёС‡РёРІР°РµС‚СЊСЃСЏ РґРѕ СЃС‚РµРїРµРЅРё РґРІРѕР№РєРё Рё Р±РѕР»СЊС€Рµ РЅРµ РјРµРЅСЏРµС‚СЃСЏ.
+			// РўРµРєСЃС‚СѓСЂР° РІСЃРµРіРґР° СЂР°СЃС‚СЏРіРёРІР°РµС‚СЊСЃСЏ РІРѕ РІРµСЃСЊ РІРёРґР¶РµС‚.
 			TRM_PT_CONST_SIZE,
 
 			/**
@@ -83,10 +68,10 @@ namespace MyGUI
 				The size specified at creation of the texture is ignored.
 				The texture is automatically recreated if the size of the widget becomes bigger.
 			*/
-			// Размер указаный при создании текстуры игнорируется.
-			// Текстура всегда больше размера окна и кратна степени двойки.
-			// Если размер виджета становится больше чем размер текстуры, текстура пересоздается.
-			// Текстура всегда отображатся пиксель в пиксель на виджет, образуя рабочую область текстуры.
+			// Р Р°Р·РјРµСЂ СѓРєР°Р·Р°РЅС‹Р№ РїСЂРё СЃРѕР·РґР°РЅРёРё С‚РµРєСЃС‚СѓСЂС‹ РёРіРЅРѕСЂРёСЂСѓРµС‚СЃСЏ.
+			// РўРµРєСЃС‚СѓСЂР° РІСЃРµРіРґР° Р±РѕР»СЊС€Рµ СЂР°Р·РјРµСЂР° РѕРєРЅР° Рё РєСЂР°С‚РЅР° СЃС‚РµРїРµРЅРё РґРІРѕР№РєРё.
+			// Р•СЃР»Рё СЂР°Р·РјРµСЂ РІРёРґР¶РµС‚Р° СЃС‚Р°РЅРѕРІРёС‚СЃСЏ Р±РѕР»СЊС€Рµ С‡РµРј СЂР°Р·РјРµСЂ С‚РµРєСЃС‚СѓСЂС‹, С‚РµРєСЃС‚СѓСЂР° РїРµСЂРµСЃРѕР·РґР°РµС‚СЃСЏ.
+			// РўРµРєСЃС‚СѓСЂР° РІСЃРµРіРґР° РѕС‚РѕР±СЂР°Р¶Р°С‚СЃСЏ РїРёРєСЃРµР»СЊ РІ РїРёРєСЃРµР»СЊ РЅР° РІРёРґР¶РµС‚, РѕР±СЂР°Р·СѓСЏ СЂР°Р±РѕС‡СѓСЋ РѕР±Р»Р°СЃС‚СЊ С‚РµРєСЃС‚СѓСЂС‹.
 			TRM_PT_VIEW_REQUESTED,
 
 			/**	Mode when the texture stretched on all widget and automatically changes the size for nice look.
@@ -96,10 +81,10 @@ namespace MyGUI
 				The size specified at creation of the texture is ignored.
 				The texture is automatically recreated if the size of the widget becomes bigger.
 			*/
-			// Размер указаный при создании текстуры игнорируется.
-			// Текстура всегда больше размера окна и кратна степени двойки.
-			// Если размер виджета становится больше чем размер текстуры, текстура пересоздается.
-			// Текстура всегда растягиваеться во весь виджет.
+			// Р Р°Р·РјРµСЂ СѓРєР°Р·Р°РЅС‹Р№ РїСЂРё СЃРѕР·РґР°РЅРёРё С‚РµРєСЃС‚СѓСЂС‹ РёРіРЅРѕСЂРёСЂСѓРµС‚СЃСЏ.
+			// РўРµРєСЃС‚СѓСЂР° РІСЃРµРіРґР° Р±РѕР»СЊС€Рµ СЂР°Р·РјРµСЂР° РѕРєРЅР° Рё РєСЂР°С‚РЅР° СЃС‚РµРїРµРЅРё РґРІРѕР№РєРё.
+			// Р•СЃР»Рё СЂР°Р·РјРµСЂ РІРёРґР¶РµС‚Р° СЃС‚Р°РЅРѕРІРёС‚СЃСЏ Р±РѕР»СЊС€Рµ С‡РµРј СЂР°Р·РјРµСЂ С‚РµРєСЃС‚СѓСЂС‹, С‚РµРєСЃС‚СѓСЂР° РїРµСЂРµСЃРѕР·РґР°РµС‚СЃСЏ.
+			// РўРµРєСЃС‚СѓСЂР° РІСЃРµРіРґР° СЂР°СЃС‚СЏРіРёРІР°РµС‚СЊСЃСЏ РІРѕ РІРµСЃСЊ РІРёРґР¶РµС‚.
 			TRM_PT_VIEW_ALL
 		};
 
@@ -153,14 +138,13 @@ namespace MyGUI
 		const std::string& getTextureName() const;
 
 		//! @copydoc Widget::setSize(const IntSize& _value)
-		virtual void setSize(const IntSize& _value);
+		void setSize(const IntSize& _value) override;
 		//! @copydoc Widget::setCoord(const IntCoord& _value)
-		virtual void setCoord(const IntCoord& _value);
+		void setCoord(const IntCoord& _value) override;
 
-		/** @copydoc Widget::setSize(int _width, int _height) */
-		void setSize(int _width, int _height);
-		/** @copydoc Widget::setCoord(int _left, int _top, int _width, int _height) */
-		void setCoord(int _left, int _top, int _width, int _height);
+		using Widget::setPosition;
+		using Widget::setSize;
+		using Widget::setCoord;
 
 		/// Returns resize mode
 		TextureResizeMode getResizeMode() const;
@@ -204,8 +188,8 @@ namespace MyGUI
 		EventHandle_CanvasPtrEvent requestUpdateCanvas;
 
 	protected:
-		virtual void shutdownOverride();
-		virtual void initialiseOverride();
+		void shutdownOverride() override;
+		void initialiseOverride() override;
 
 		/// Destroys texture
 		void _destroyTexture(bool _sendEvent);
@@ -231,7 +215,7 @@ namespace MyGUI
 		/// For updating once per frame.
 		void frameEntered(float _time);
 
-		virtual void textureInvalidate(ITexture* _texture);
+		void textureInvalidate(ITexture* _texture) override;
 
 		void _setUVSet(const FloatRect& _rect);
 
@@ -262,4 +246,4 @@ namespace MyGUI
 
 } // namespace MyGUI
 
-#endif // __MYGUI_CANVAS_H__
+#endif // MYGUI_CANVAS_H_

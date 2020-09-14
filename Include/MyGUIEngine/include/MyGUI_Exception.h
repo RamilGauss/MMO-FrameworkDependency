@@ -1,30 +1,21 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		05/2009
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_EXCEPTION_H__
-#define __MYGUI_EXCEPTION_H__
+#ifndef MYGUI_EXCEPTION_H_
+#define MYGUI_EXCEPTION_H_
 
 #include "MyGUI_Prerequest.h"
 #include <exception>
 #include <string>
+
+#if MYGUI_COMPILER == MYGUI_COMPILER_MSVC
+ // disable: warning C4275: non dll-interface class '***' used as base for dll-interface clas '***'
+#	pragma warning (push)
+#	pragma warning (disable : 4275)
+#endif
 
 namespace MyGUI
 {
@@ -36,9 +27,6 @@ namespace MyGUI
 		Exception(const std::string& _description, const std::string& _source, const char* _file, long _line);
 
 		Exception(const Exception& _rhs);
-
-		// Needed for  compatibility with std::exception
-		~Exception() throw();
 
 		Exception& operator = (const Exception& _rhs);
 
@@ -52,8 +40,7 @@ namespace MyGUI
 
 		virtual const std::string& getDescription() const;
 
-		// Override std::exception::what
-		const char* what() const throw();
+		const char* what() const noexcept override;
 
 	protected:
 		std::string mDescription;
@@ -65,4 +52,8 @@ namespace MyGUI
 
 } // namespace MyGUI
 
-#endif // __MYGUI_EXCEPTION_H__
+#if MYGUI_COMPILER == MYGUI_COMPILER_MSVC
+#	pragma warning (pop)
+#endif
+
+#endif // MYGUI_EXCEPTION_H_

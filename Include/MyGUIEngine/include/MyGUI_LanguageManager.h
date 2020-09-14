@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		09/2008
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_LANGUAGE_MANAGER_H__
-#define __MYGUI_LANGUAGE_MANAGER_H__
+#ifndef MYGUI_LANGUAGE_MANAGER_H_
+#define MYGUI_LANGUAGE_MANAGER_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_Singleton.h"
@@ -46,6 +31,8 @@ namespace MyGUI
 		void setCurrentLanguage(const std::string& _name);
 		/** Get current language */
 		const std::string& getCurrentLanguage() const;
+		/** Get all available languages */
+		VectorString getLanguages() const;
 
 		/** Replace all tags #{tagname} in _line with appropriate string dependent
 		on current language or keep #{tagname} if 'tagname' not found found */
@@ -67,8 +54,7 @@ namespace MyGUI
 			signature : void method(const std::string& _language);
 			@param _language Current language.
 		*/
-		delegates::CMultiDelegate1<const std::string&>
-			eventChangeLanguage;
+		delegates::CMultiDelegate1<const std::string&> eventChangeLanguage;
 
 		/** Event : Request tag.\n
 			signature : void method(const MyGUI::UString& _tag, MyGUI::UString& _result);
@@ -76,8 +62,7 @@ namespace MyGUI
 			@param _result String that should be placed instead specified tag.
 			@note If this event is empty and _tag not found - "#{_tag}" used by default.
 		*/
-		delegates::CDelegate2<const UString&, UString&>
-			eventRequestTag;
+		delegates::CDelegate2<const UString&, UString&> eventRequestTag;
 
 	private:
 		void _load(xml::ElementPtr _node, const std::string& _file, Version _version);
@@ -105,4 +90,4 @@ namespace MyGUI
 
 } // namespace MyGUI
 
-#endif // __MYGUI_LANGUAGE_MANAGER_H__
+#endif // MYGUI_LANGUAGE_MANAGER_H_

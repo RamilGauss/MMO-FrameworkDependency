@@ -1,10 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		09/2009
-*/
-#ifndef __MYGUI_TEXT_VIEW_H__
-#define __MYGUI_TEXT_VIEW_H__
+/*
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
+
+#ifndef MYGUI_TEXT_VIEW_H_
+#define MYGUI_TEXT_VIEW_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_TextureUtility.h"
@@ -40,4 +41,4 @@ namespace MyGUI
 
 } // namespace MyGUI
 
-#endif // __MYGUI_TEXT_VIEW_H__
+#endif // MYGUI_TEXT_VIEW_H_

@@ -1,24 +1,9 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		01/2008
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_Gui.h"
 #include "MyGUI_ControllerManager.h"
@@ -28,6 +13,7 @@
 #include "MyGUI_ControllerEdgeHide.h"
 #include "MyGUI_ControllerFadeAlpha.h"
 #include "MyGUI_ControllerPosition.h"
+#include "MyGUI_ControllerRepeatClick.h"
 
 namespace MyGUI
 {
@@ -51,6 +37,7 @@ namespace MyGUI
 		FactoryManager::getInstance().registerFactory<ControllerEdgeHide>(mCategoryName);
 		FactoryManager::getInstance().registerFactory<ControllerFadeAlpha>(mCategoryName);
 		FactoryManager::getInstance().registerFactory<ControllerPosition>(mCategoryName);
+		FactoryManager::getInstance().registerFactory<ControllerRepeatClick>(mCategoryName);
 
 		MYGUI_LOG(Info, getClassTypeName() << " successfully initialized");
 		mIsInitialise = true;
@@ -64,6 +51,7 @@ namespace MyGUI
 		FactoryManager::getInstance().unregisterFactory<ControllerEdgeHide>(mCategoryName);
 		FactoryManager::getInstance().unregisterFactory<ControllerFadeAlpha>(mCategoryName);
 		FactoryManager::getInstance().unregisterFactory<ControllerPosition>(mCategoryName);
+		FactoryManager::getInstance().unregisterFactory<ControllerRepeatClick>(mCategoryName);
 
 		WidgetManager::getInstance().unregisterUnlinker(this);
 		clear();
@@ -89,10 +77,6 @@ namespace MyGUI
 
 	void ControllerManager::addItem(Widget* _widget, ControllerItem* _item)
 	{
-		// если виджет первый, то подписываемся на кадры
-		if (mListItem.empty())
-			Gui::getInstance().eventFrameStart += newDelegate(this, &ControllerManager::frameEntered);
-
 		// подготавливаем
 		_item->prepareItem(_widget);
 
@@ -109,6 +93,10 @@ namespace MyGUI
 				}
 			}
 		}
+
+		// если виджет первый, то подписываемся на кадры
+		if (mListItem.empty())
+			Gui::getInstance().eventFrameStart += newDelegate(this, &ControllerManager::frameEntered);
 
 		// вставляем в самый конец
 		mListItem.push_back(PairControllerItem(_widget, _item));

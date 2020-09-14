@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		11/2007
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_STRING_UTILITY_H__
-#define __MYGUI_STRING_UTILITY_H__
+#ifndef MYGUI_STRING_UTILITY_H_
+#define MYGUI_STRING_UTILITY_H_
 
 #include "MyGUI_Prerequest.h"
 #include <vector>
@@ -148,9 +133,7 @@ namespace MyGUI
 		template<>
 		inline bool parseValue(const std::string& _value)
 		{
-			if (_value == "True" || _value == "true" || _value == "1")
-				return true;
-			return false;
+			return _value == "True" || _value == "true" || _value == "1";
 		}
 
 		// отдельная имплементация под char
@@ -440,4 +423,4 @@ namespace MyGUI
 
 } // namespace MyGUI
 
-#endif // __MYGUI_STRING_UTILITY_H__
+#endif // MYGUI_STRING_UTILITY_H_

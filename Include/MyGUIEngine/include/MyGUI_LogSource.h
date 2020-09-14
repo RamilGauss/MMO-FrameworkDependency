@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		04/2010
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_LOG_SOURCE_H__
-#define __MYGUI_LOG_SOURCE_H__
+#ifndef MYGUI_LOG_SOURCE_H_
+#define MYGUI_LOG_SOURCE_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_ILogFilter.h"
@@ -51,11 +36,11 @@ namespace MyGUI
 		void log(const std::string& _section, LogLevel _level, const struct tm* _time, const std::string& _message, const char* _file, int _line);
 
 	private:
-		typedef std::vector<ILogListener*> VectorLogListeners;
+		using VectorLogListeners = std::vector<ILogListener*>;
 		VectorLogListeners mListeners;
 		ILogFilter* mFilter;
 	};
 
 } // namespace MyGUI
 
-#endif // __MYGUI_LOG_SOURCE_H__
+#endif // MYGUI_LOG_SOURCE_H_

@@ -1,37 +1,14 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		09/2010
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_BiIndexBase.h"
 
 namespace MyGUI
 {
-
-	BiIndexBase::BiIndexBase()
-	{
-	}
-
-	BiIndexBase::~BiIndexBase()
-	{
-	}
 
 	size_t BiIndexBase::getIndexCount() const
 	{
@@ -40,10 +17,10 @@ namespace MyGUI
 
 	size_t BiIndexBase::insertItemAt(size_t _index)
 	{
-		#if MYGUI_DEBUG_MODE == 1
-			MYGUI_ASSERT_RANGE_INSERT(_index, mIndexFace.size(), "BiIndexBase::insertItemAt");
-			checkIndexes();
-		#endif
+#if MYGUI_DEBUG_MODE == 1
+		MYGUI_ASSERT_RANGE_INSERT(_index, mIndexFace.size(), "BiIndexBase::insertItemAt");
+		checkIndexes();
+#endif
 
 		if (_index == MyGUI::ITEM_NONE)
 			_index = mIndexFace.size();
@@ -79,19 +56,19 @@ namespace MyGUI
 			}
 		}
 
-		#if MYGUI_DEBUG_MODE == 1
-			checkIndexes();
-		#endif
+#if MYGUI_DEBUG_MODE == 1
+		checkIndexes();
+#endif
 
 		return index;
 	}
 
 	size_t BiIndexBase::removeItemAt(size_t _index)
 	{
-		#if MYGUI_DEBUG_MODE == 1
-			MYGUI_ASSERT_RANGE(_index, mIndexFace.size(), "BiIndexBase::removeItemAt");
-			checkIndexes();
-		#endif
+#if MYGUI_DEBUG_MODE == 1
+		MYGUI_ASSERT_RANGE(_index, mIndexFace.size(), "BiIndexBase::removeItemAt");
+		checkIndexes();
+#endif
 
 		// для удаления айтема
 		size_t index = mIndexFace[_index];
@@ -107,9 +84,9 @@ namespace MyGUI
 			mIndexBack[mIndexFace[pos]] = pos;
 		}
 
-		#if MYGUI_DEBUG_MODE == 1
-			checkIndexes();
-		#endif
+#if MYGUI_DEBUG_MODE == 1
+		checkIndexes();
+#endif
 
 		return index;
 	}
@@ -123,28 +100,28 @@ namespace MyGUI
 	// на входе индексы пользователя, на выходе реальные индексы
 	size_t BiIndexBase::convertToBack(size_t _index) const
 	{
-		#if MYGUI_DEBUG_MODE == 1
-			MYGUI_ASSERT_RANGE_AND_NONE(_index, mIndexFace.size(), "BiIndexBase::convertToBack");
-		#endif
+#if MYGUI_DEBUG_MODE == 1
+		MYGUI_ASSERT_RANGE_AND_NONE(_index, mIndexFace.size(), "BiIndexBase::convertToBack");
+#endif
 		return _index == ITEM_NONE ? ITEM_NONE : mIndexFace[_index];
 	}
 
 	// на входе индексы реальные, на выходе, то что видит пользователь
 	size_t BiIndexBase::convertToFace(size_t _index) const
 	{
-		#if MYGUI_DEBUG_MODE == 1
-			MYGUI_ASSERT_RANGE_AND_NONE(_index, mIndexFace.size(), "BiIndexBase::convertToFace");
-		#endif
+#if MYGUI_DEBUG_MODE == 1
+		MYGUI_ASSERT_RANGE_AND_NONE(_index, mIndexFace.size(), "BiIndexBase::convertToFace");
+#endif
 		return _index == ITEM_NONE ? ITEM_NONE : mIndexBack[_index];
 	}
 
 	// меняет местами два индекса, индексы со стороны пользователя
 	void BiIndexBase::swapItemsFaceAt(size_t _index1, size_t _index2)
 	{
-		#if MYGUI_DEBUG_MODE == 1
-			MYGUI_ASSERT_RANGE(_index1, mIndexFace.size(), "BiIndexBase::swapItemsFaceAt");
-			MYGUI_ASSERT_RANGE(_index2, mIndexFace.size(), "BiIndexBase::swapItemsFaceAt");
-		#endif
+#if MYGUI_DEBUG_MODE == 1
+		MYGUI_ASSERT_RANGE(_index1, mIndexFace.size(), "BiIndexBase::swapItemsFaceAt");
+		MYGUI_ASSERT_RANGE(_index2, mIndexFace.size(), "BiIndexBase::swapItemsFaceAt");
+#endif
 
 		std::swap(mIndexFace[_index1], mIndexFace[_index2]);
 		std::swap(mIndexBack[mIndexFace[_index1]], mIndexBack[mIndexFace[_index2]]);
@@ -153,10 +130,10 @@ namespace MyGUI
 	// меняет местами два индекса, индексы со сторонны данных
 	void BiIndexBase::swapItemsBackAt(size_t _index1, size_t _index2)
 	{
-		#if MYGUI_DEBUG_MODE == 1
-			MYGUI_ASSERT_RANGE(_index1, mIndexFace.size(), "BiIndexBase::swapItemsBackAt");
-			MYGUI_ASSERT_RANGE(_index2, mIndexFace.size(), "BiIndexBase::swapItemsBackAt");
-		#endif
+#if MYGUI_DEBUG_MODE == 1
+		MYGUI_ASSERT_RANGE(_index1, mIndexFace.size(), "BiIndexBase::swapItemsBackAt");
+		MYGUI_ASSERT_RANGE(_index2, mIndexFace.size(), "BiIndexBase::swapItemsBackAt");
+#endif
 
 		std::swap(mIndexBack[_index1], mIndexBack[_index2]);
 		std::swap(mIndexFace[mIndexBack[_index1]], mIndexFace[mIndexBack[_index2]]);

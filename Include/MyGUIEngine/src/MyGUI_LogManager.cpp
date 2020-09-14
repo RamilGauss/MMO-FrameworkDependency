@@ -1,31 +1,15 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		01/2008
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_LogManager.h"
 #include "MyGUI_FileLogListener.h"
 #include "MyGUI_ConsoleLogListener.h"
 #include "MyGUI_LevelLogFilter.h"
-#include "MyGUI_LogSource.h"
-#include <time.h>
+#include <ctime>
 
 namespace MyGUI
 {
@@ -62,11 +46,7 @@ namespace MyGUI
 
 	LogManager& LogManager::getInstance()
 	{
-		if (msInstance == nullptr)
-		{
-			MYGUI_DBG_BREAK;
-			MYGUI_BASE_EXCEPT("Singleton instance LogManager was not created", "MyGUI");
-		}
+		MYGUI_ASSERT(nullptr != getInstancePtr(), "Singleton instance LogManager was not created");
 		return *msInstance;
 	}
 
@@ -103,19 +83,22 @@ namespace MyGUI
 		mSources.push_back(_source);
 	}
 
-  void LogManager::createDefaultSource(const std::string& _logname)
+	void LogManager::createDefaultSource(const std::string& _logname)
 	{
-    mConsole = new ConsoleLogListener();
-		mFile = new FileLogListener();
-		mFilter = new LevelLogFilter();
-
-		mFile->setFileName(_logname);
-		mConsole->setEnabled(mConsoleEnable);
-		mFilter->setLoggingLevel(mLevel);
-
 		mDefaultSource = new LogSource();
-		mDefaultSource->addLogListener(mFile);
+
+		mConsole = new ConsoleLogListener();
+		mConsole->setEnabled(mConsoleEnable);
 		mDefaultSource->addLogListener(mConsole);
+
+#ifndef EMSCRIPTEN
+		mFile = new FileLogListener();
+		mFile->setFileName(_logname);
+		mDefaultSource->addLogListener(mFile);
+#endif
+
+		mFilter = new LevelLogFilter();
+		mFilter->setLoggingLevel(mLevel);
 		mDefaultSource->setLogFilter(mFilter);
 
 		mDefaultSource->open();

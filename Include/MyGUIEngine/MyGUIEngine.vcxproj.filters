@@ -65,6 +65,9 @@
     <ClCompile Include="src\MyGUI_ControllerPosition.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\MyGUI_ControllerRepeatClick.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="src\MyGUI_DataFileStream.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -299,6 +302,9 @@
     <ClCompile Include="src\MyGUI_Window.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\MyGUI_WindowsClipboardHandler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="src\MyGUI_XmlDocument.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -311,9 +317,6 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\MyGUI_Align.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\MyGUI_Allocator.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\MyGUI_Any.h">
@@ -373,10 +376,10 @@
     <ClInclude Include="include\MyGUI_ControllerPosition.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\MyGUI_CoordConverter.h">
+    <ClInclude Include="include\MyGUI_ControllerRepeatClick.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\MyGUI_CustomAllocator.h">
+    <ClInclude Include="include\MyGUI_CoordConverter.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\MyGUI_DataFileStream.h">
@@ -401,9 +404,6 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\MyGUI_Delegate.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\MyGUI_DelegateImplement.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\MyGUI_DeprecatedTypes.h">
@@ -812,6 +812,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\MyGUI_Window.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyGUI_WindowsClipboardHandler.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\MyGUI_XmlDocument.h">

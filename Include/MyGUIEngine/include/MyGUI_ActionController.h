@@ -1,30 +1,15 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		01/2008
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_ACTION_CONTROLLER_H__
-#define __MYGUI_ACTION_CONTROLLER_H__
+#ifndef MYGUI_ACTION_CONTROLLER_H_
+#define MYGUI_ACTION_CONTROLLER_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_Types.h"
-#include <math.h>
+#include <cmath>
 
 namespace MyGUI
 {
@@ -53,7 +38,7 @@ namespace MyGUI
 		template <int N>
 		inline void acceleratedMoveFunction(const IntCoord& _startRect, const IntCoord& _destRect, IntCoord& _result, float _current_time)
 		{
-			float k = (float)pow (_current_time, N / 10.f /*3 by default as Accelerated and 0.4 by default as Slowed*/);
+			float k = std::pow(_current_time, N / 10.f /*3 by default as Accelerated and 0.4 by default as Slowed*/);
 			linearMoveFunction(_startRect, _destRect, _result, k);
 		}
 
@@ -61,7 +46,7 @@ namespace MyGUI
 		template <int N>
 		inline void jumpMoveFunction(const IntCoord& _startRect, const IntCoord& _destRect, IntCoord& _result, float _current_time)
 		{
-			float k = pow (_current_time, 2) * (-2 - N / 10.f) + _current_time * (3 + N / 10.f);
+			float k = std::pow(_current_time, 2.0f) * (-2 - N / 10.f) + _current_time * (3 + N / 10.f);
 			linearMoveFunction(_startRect, _destRect, _result, k);
 		}
 
@@ -72,4 +57,4 @@ namespace MyGUI
 
 } // namespace MyGUI
 
-#endif // __MYGUI_ACTION_CONTROLLER_H__
+#endif // MYGUI_ACTION_CONTROLLER_H_

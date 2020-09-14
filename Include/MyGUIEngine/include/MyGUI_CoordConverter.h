@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		06/2009
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_COORD_CONVERTER_H__
-#define __MYGUI_COORD_CONVERTER_H__
+#ifndef MYGUI_COORD_CONVERTER_H_
+#define MYGUI_COORD_CONVERTER_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_Types.h"
@@ -39,8 +24,7 @@ namespace MyGUI
 				(float)_coord.left / (float)_textureSize.width,
 				(float)_coord.top / (float)_textureSize.height,
 				(float)_coord.right() / (float)_textureSize.width,
-				(float)_coord.bottom() / (float)_textureSize.height
-			);
+				(float)_coord.bottom() / (float)_textureSize.height);
 		}
 
 		/* Convert from relative to pixel coordinates.
@@ -84,8 +68,18 @@ namespace MyGUI
 		{
 			return FloatPoint(_point.left / (float)_view.width, _point.top / (float)_view.height);
 		}
+
+		static IntCoord convertFromRelative(const DoubleCoord& _coord, const IntSize& _view)
+		{
+			return IntCoord(int(_coord.left * _view.width), int(_coord.top * _view.height), int(_coord.width * _view.width), int(_coord.height * _view.height));
+		}
+
+		static DoubleCoord convertToRelativeD(const IntCoord& _coord, const IntSize& _view)
+		{
+			return DoubleCoord(_coord.left / (double)_view.width, _coord.top / (double)_view.height, _coord.width / (double)_view.width, _coord.height / (double)_view.height);
+		}
 	};
 
 } // namespace MyGUI
 
-#endif // __MYGUI_COORD_CONVERTER_H__
+#endif // MYGUI_COORD_CONVERTER_H_

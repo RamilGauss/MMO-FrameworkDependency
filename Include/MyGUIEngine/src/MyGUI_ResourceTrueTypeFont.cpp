@@ -1,24 +1,9 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		11/2007
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_ResourceTrueTypeFont.h"
 #include "MyGUI_DataManager.h"
@@ -28,29 +13,10 @@
 
 #ifdef MYGUI_USE_FREETYPE
 
-	#include FT_GLYPH_H
-	#include FT_TRUETYPE_TABLES_H
-	#include FT_BITMAP_H
-	#include FT_WINFONTS_H
-
-	// The following macro enables a workaround for a bug in FreeType's bytecode interpreter that, when using certain fonts at
-	// certain sizes, causes FreeType to start measuring and rendering some glyphs inconsistently after certain other glyphs have
-	// been loaded. See FreeType bug #35374 for details: https://savannah.nongnu.org/bugs/?35374
-	//
-	// To reproduce the bug, first disable the workaround by defining MYGUI_USE_FREETYPE_BYTECODE_BUG_FIX to 0. Then load the
-	// DejaVu Sans font at 10 pt using default values for all other properties. Observe that the glyphs for the "0", 6", "8", and
-	// "9" characters are now badly corrupted when rendered.
-	//
-	// This bug still exists as of FreeType 2.4.8 and there are currently no plans to fix it. If the bug is ever fixed, this
-	// workaround should be disabled, as it causes fonts to take longer to load.
-	//
-	// The bug can currently also be suppressed by disabling FreeType's bytecode interpreter altogether. To do so, remove the
-	// TT_CONFIG_OPTION_BYTECODE_INTERPRETER macro in the "ftoption.h" FreeType header file. Once this is done, this workaround can
-	// be safely disabled. Note that disabling FreeType's bytecode interpreter will cause rendered text to look somewhat different.
-	// Whether it looks better or worse is a matter of taste and may also depend on the font.
-	#ifndef MYGUI_USE_FREETYPE_BYTECODE_BUG_FIX
-		#define MYGUI_USE_FREETYPE_BYTECODE_BUG_FIX 1
-	#endif
+#	include FT_GLYPH_H
+#	include FT_TRUETYPE_TABLES_H
+#	include FT_BITMAP_H
+#	include FT_WINFONTS_H
 
 #endif // MYGUI_USE_FREETYPE
 
@@ -87,6 +53,10 @@ namespace MyGUI
 		return 0;
 	}
 
+	void ResourceTrueTypeFont::textureInvalidate(ITexture* _texture)
+	{
+	}
+
 	std::vector<std::pair<Char, Char> > ResourceTrueTypeFont::getCodePointRanges() const
 	{
 		return std::vector<std::pair<Char, Char> >();
@@ -109,7 +79,7 @@ namespace MyGUI
 	{
 	}
 
-	void ResourceTrueTypeFont::setResolution(uint _value)
+	void ResourceTrueTypeFont::setResolution(unsigned int _value)
 	{
 	}
 
@@ -164,7 +134,7 @@ namespace MyGUI
 			std::make_pair(FontCodeType::Tab, (const uint8)'\x00')
 		};
 
-		const std::map<const Char, const uint8> charMask(charMaskData, charMaskData + sizeof charMaskData / sizeof *charMaskData);
+		const std::map<const Char, const uint8> charMask(charMaskData, charMaskData + sizeof charMaskData / sizeof(*charMaskData));
 
 		const uint8 charMaskBlack = (const uint8)'\x00';
 		const uint8 charMaskWhite = (const uint8)'\xFF';
@@ -243,7 +213,7 @@ namespace MyGUI
 		struct Pixel<LAMode, false, Antialias> : PixelBase<LAMode>
 		{
 			// Sets the destination pixel using the specified luminance and alpha. Source is ignored, since FromSource is false.
-			static void set(uint8*& _dest, uint8 _luminance, uint8 _alpha, uint8* = nullptr)
+			static void set(uint8*& _dest, uint8 _luminance, uint8 _alpha, uint8* /*_source*/ = nullptr)
 			{
 				PixelBase<LAMode>::set(_dest, _luminance, _alpha);
 			}
@@ -253,7 +223,7 @@ namespace MyGUI
 		struct Pixel<LAMode, true, false> : PixelBase<LAMode>
 		{
 			// Sets the destination pixel using the specified _luminance and using the alpha from the specified source.
-			static void set(uint8*& _dest, uint8 _luminance, uint8, uint8*& _source)
+			static void set(uint8*& _dest, uint8 _luminance, uint8 /*_alpha*/, uint8*& _source)
 			{
 				PixelBase<LAMode>::set(_dest, _luminance, *_source++);
 			}
@@ -263,7 +233,7 @@ namespace MyGUI
 		struct Pixel<LAMode, true, true> : PixelBase<LAMode>
 		{
 			// Sets the destination pixel using both the luminance and alpha from the specified source, since Antialias is true.
-			static void set(uint8*& _dest, uint8, uint8, uint8*& _source)
+			static void set(uint8*& _dest, uint8 /*_luminance*/, uint8 /*_alpha*/, uint8*& _source)
 			{
 				PixelBase<LAMode>::set(_dest, *_source, *_source);
 				++_source;
@@ -389,14 +359,11 @@ namespace MyGUI
 
 	GlyphInfo* ResourceTrueTypeFont::getGlyphInfo(Char _id)
 	{
-		CharMap::const_iterator charIter = mCharMap.find(_id);
+		GlyphMap::iterator glyphIter = mGlyphMap.find(_id);
 
-		if (charIter != mCharMap.end())
+		if (glyphIter != mGlyphMap.end())
 		{
-			GlyphMap::iterator glyphIter = mGlyphMap.find(charIter->second);
-
-			if (glyphIter != mGlyphMap.end())
-				return &glyphIter->second;
+			return &glyphIter->second;
 		}
 
 		return mSubstituteGlyphInfo;
@@ -410,6 +377,12 @@ namespace MyGUI
 	int ResourceTrueTypeFont::getDefaultHeight()
 	{
 		return mDefaultHeight;
+	}
+
+	void ResourceTrueTypeFont::textureInvalidate(ITexture* _texture)
+	{
+		mGlyphMap.clear();
+		initialise();
 	}
 
 	std::vector<std::pair<Char, Char> > ResourceTrueTypeFont::getCodePointRanges() const
@@ -581,7 +554,6 @@ namespace MyGUI
 			ftLoadFlags = FT_LOAD_NO_HINTING | FT_LOAD_RENDER;
 			break;
 		case HintingUseNative:
-		default:
 			ftLoadFlags = FT_LOAD_DEFAULT;
 			break;
 		}
@@ -613,53 +585,6 @@ namespace MyGUI
 				mCharMap.erase(iter++);
 		}
 
-#if MYGUI_USE_FREETYPE_BYTECODE_BUG_FIX
-
-		bool isBytecodeAvailable = (ftFace->face_flags & FT_FACE_FLAG_HINTER) != 0;
-		bool isBytecodeUsedByLoadFlags = (ftLoadFlags & (FT_LOAD_FORCE_AUTOHINT | FT_LOAD_NO_HINTING)) == 0;
-
-		if (isBytecodeAvailable && isBytecodeUsedByLoadFlags)
-		{
-			for (GlyphMap::iterator iter = mGlyphMap.begin(); iter != mGlyphMap.end(); ++iter)
-			{
-				if (FT_Load_Glyph(ftFace, iter->first, ftLoadFlags) == 0)
-				{
-					GlyphInfo& info = iter->second;
-					GlyphInfo newInfo = createFaceGlyphInfo(0, fontAscent, ftFace->glyph);
-
-					if (info.width != newInfo.width)
-					{
-						texWidth += (int)ceil(newInfo.width) - (int)ceil(info.width);
-						info.width = newInfo.width;
-					}
-
-					if (info.height != newInfo.height)
-					{
-						GlyphHeightMap::mapped_type oldHeightMap = glyphHeightMap[(FT_Pos)info.height];
-						GlyphHeightMap::mapped_type::iterator heightMapItem = oldHeightMap.find(iter->first);
-						glyphHeightMap[(FT_Pos)newInfo.height].insert(*heightMapItem);
-						oldHeightMap.erase(heightMapItem);
-						info.height = newInfo.height;
-					}
-
-					if (info.advance != newInfo.advance)
-						info.advance = newInfo.advance;
-
-					if (info.bearingX != newInfo.bearingX)
-						info.bearingX = newInfo.bearingX;
-
-					if (info.bearingY != newInfo.bearingY)
-						info.bearingY = newInfo.bearingY;
-				}
-				else
-				{
-					MYGUI_LOG(Warning, "ResourceTrueTypeFont: Cannot load glyph " << iter->first << " for character " << iter->second.codePoint << " in font '" << getResourceName() << "'.");
-				}
-			}
-		}
-
-#endif // MYGUI_USE_FREETYPE_BYTECODE_BUG_FIX
-
 		// Do some special handling for the "Space" and "Tab" glyphs.
 		GlyphInfo* spaceGlyphInfo = getGlyphInfo(FontCodeType::Space);
 
@@ -668,7 +593,7 @@ namespace MyGUI
 			// Adjust the width of the "Space" glyph if it has been customized.
 			if (mSpaceWidth != 0.0f)
 			{
-				texWidth += (int)ceil(mSpaceWidth) - (int)ceil(spaceGlyphInfo->width);
+				texWidth += (int)std::ceil(mSpaceWidth) - (int)std::ceil(spaceGlyphInfo->width);
 				spaceGlyphInfo->width = mSpaceWidth;
 				spaceGlyphInfo->advance = mSpaceWidth;
 			}
@@ -701,7 +626,7 @@ namespace MyGUI
 			texWidth += createFaceGlyph(0, static_cast<Char>(FontCodeType::NotDefined), fontAscent, ftFace, ftLoadFlags, glyphHeightMap);
 
 		// Cache a pointer to the substitute glyph info for fast lookup.
-		mSubstituteGlyphInfo = &mGlyphMap.find(mCharMap.find(mSubstituteCodePoint)->second)->second;
+		mSubstituteGlyphInfo = &mGlyphMap.find(mSubstituteCodePoint)->second;
 
 		// Calculate the average height of all of the glyphs that are in use. This value will be used for estimating how large the
 		// texture needs to be.
@@ -739,7 +664,8 @@ namespace MyGUI
 			if (texHeight > texWidth * 2)
 				texWidth *= 2;
 
-			int texX = 0, texY = 0;
+			int texX = mGlyphSpacing;
+			int texY = mGlyphSpacing;
 
 			for (GlyphHeightMap::const_iterator j = glyphHeightMap.begin(); j != glyphHeightMap.end(); ++j)
 			{
@@ -747,8 +673,8 @@ namespace MyGUI
 				{
 					GlyphInfo& info = *i->second;
 
-					int glyphWidth = (int)ceil(info.width);
-					int glyphHeight = (int)ceil(info.height);
+					int glyphWidth = (int)std::ceil(info.width);
+					int glyphHeight = (int)std::ceil(info.height);
 
 					autoWrapGlyphPos(glyphWidth, texWidth, glyphHeight, texX, texY);
 
@@ -765,9 +691,16 @@ namespace MyGUI
 		// Create the texture and render the glyphs onto it.
 		//-------------------------------------------------------------------//
 
+		if (mTexture)
+		{
+			RenderManager::getInstance().destroyTexture( mTexture );
+			mTexture = nullptr;
+		}
+
 		mTexture = RenderManager::getInstance().createTexture(MyGUI::utility::toString((size_t)this, "_TrueTypeFont"));
 
 		mTexture->createManual(texWidth, texHeight, TextureUsage::Static | TextureUsage::Write, Pixel<LAMode>::getFormat());
+		mTexture->setInvalidateListener(this);
 
 		uint8* texBuffer = static_cast<uint8*>(mTexture->lock(TextureUsage::Write));
 
@@ -907,7 +840,7 @@ namespace MyGUI
 	{
 		if (_glyphWidth > 0 && _texX + mGlyphSpacing + _glyphWidth > _texWidth)
 		{
-			_texX = 0;
+			_texX = mGlyphSpacing;
 			_texY += mGlyphSpacing + _lineHeight;
 		}
 	}
@@ -926,16 +859,16 @@ namespace MyGUI
 			std::max((float)_glyph->bitmap.rows, _glyph->metrics.height / 64.0f),
 			(_glyph->advance.x / 64.0f) - bearingX,
 			bearingX,
-			floor(_fontAscent - (_glyph->metrics.horiBearingY / 64.0f) - mOffsetHeight));
+			std::floor(_fontAscent - (_glyph->metrics.horiBearingY / 64.0f) - mOffsetHeight));
 	}
 
 	int ResourceTrueTypeFont::createGlyph(FT_UInt _glyphIndex, const GlyphInfo& _glyphInfo, GlyphHeightMap& _glyphHeightMap)
 	{
-		int width = (int)ceil(_glyphInfo.width);
-		int height = (int)ceil(_glyphInfo.height);
+		int width = (int)std::ceil(_glyphInfo.width);
+		int height = (int)std::ceil(_glyphInfo.height);
 
 		mCharMap[_glyphInfo.codePoint] = _glyphIndex;
-		GlyphInfo& info = mGlyphMap.insert(GlyphMap::value_type(_glyphIndex, _glyphInfo)).first->second;
+		GlyphInfo& info = mGlyphMap.insert(GlyphMap::value_type(_glyphInfo.codePoint, _glyphInfo)).first->second;
 		_glyphHeightMap[(FT_Pos)height].insert(std::make_pair(_glyphIndex, &info));
 
 		return (width > 0) ? mGlyphSpacing + width : 0;
@@ -943,7 +876,7 @@ namespace MyGUI
 
 	int ResourceTrueTypeFont::createFaceGlyph(FT_UInt _glyphIndex, Char _codePoint, int _fontAscent, const FT_Face& _ftFace, FT_Int32 _ftLoadFlags, GlyphHeightMap& _glyphHeightMap)
 	{
-		if (mGlyphMap.find(_glyphIndex) == mGlyphMap.end())
+		if (mGlyphMap.find(_codePoint) == mGlyphMap.end())
 		{
 			if (FT_Load_Glyph(_ftFace, _glyphIndex, _ftLoadFlags) == 0)
 				return createGlyph(_glyphIndex, createFaceGlyphInfo(_codePoint, _fontAscent, _ftFace->glyph), _glyphHeightMap);
@@ -964,7 +897,7 @@ namespace MyGUI
 		FT_Bitmap ftBitmap;
 		FT_Bitmap_New(&ftBitmap);
 
-		int texX = 0, texY = 0;
+		int texX = mGlyphSpacing, texY = mGlyphSpacing;
 
 		for (GlyphHeightMap::const_iterator j = _glyphHeightMap.begin(); j != _glyphHeightMap.end(); ++j)
 		{
@@ -1037,8 +970,8 @@ namespace MyGUI
 	template<bool LAMode, bool UseBuffer, bool Antialias>
 	void ResourceTrueTypeFont::renderGlyph(GlyphInfo& _info, uint8 _luminance0, uint8 _luminance1, uint8 _alpha, int _lineHeight, uint8* _texBuffer, int _texWidth, int _texHeight, int& _texX, int& _texY, uint8* _glyphBuffer)
 	{
-		int width = (int)ceil(_info.width);
-		int height = (int)ceil(_info.height);
+		int width = (int)std::ceil(_info.width);
+		int height = (int)std::ceil(_info.height);
 
 		autoWrapGlyphPos(width, _texWidth, _lineHeight, _texX, _texY);
 
@@ -1082,7 +1015,7 @@ namespace MyGUI
 		mSize = _value;
 	}
 
-	void ResourceTrueTypeFont::setResolution(uint _value)
+	void ResourceTrueTypeFont::setResolution(unsigned int _value)
 	{
 		mResolution = _value;
 	}

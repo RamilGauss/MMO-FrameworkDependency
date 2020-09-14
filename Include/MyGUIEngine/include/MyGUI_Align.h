@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		08/2008
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_ALIGN_H__
-#define __MYGUI_ALIGN_H__
+#ifndef MYGUI_ALIGN_H_
+#define MYGUI_ALIGN_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_Macros.h"
@@ -144,9 +129,9 @@ namespace MyGUI
 			Align result(Enum(0));
 			const MapAlign& map_names = result.getValueNames();
 			const std::vector<std::string>& vec = utility::split(_value);
-			for (size_t pos = 0; pos < vec.size(); pos++)
+			for (const auto& pos : vec)
 			{
-				MapAlign::const_iterator iter = map_names.find(vec[pos]);
+				auto iter = map_names.find(pos);
 				if (iter != map_names.end())
 				{
 					result.mValue = Enum(int(result.mValue) | int(iter->second));
@@ -199,7 +184,7 @@ namespace MyGUI
 			_stream >> value;
 
 			const MapAlign& map_names = _value.getValueNames();
-			MapAlign::const_iterator iter = map_names.find(value);
+			auto iter = map_names.find(value);
 			if (iter != map_names.end())
 				_value.mValue = Enum(int(_value.mValue) | int(iter->second));
 
@@ -262,4 +247,4 @@ namespace MyGUI
 
 } // namespace MyGUI
 
-#endif // __MYGUI_ALIGN_H__
+#endif // MYGUI_ALIGN_H_

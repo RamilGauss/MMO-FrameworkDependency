@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		11/2007
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_TYPES_H__
-#define __MYGUI_TYPES_H__
+#ifndef MYGUI_TYPES_H_
+#define MYGUI_TYPES_H_
 
 #include "MyGUI_Prerequest.h"
 
@@ -38,33 +23,30 @@ namespace MyGUI
 {
 
 	// определяем типы
-	typedef types::TPoint<int> IntPoint;
-	typedef types::TPoint<float> FloatPoint;
+	using IntPoint = types::TPoint<int>;
+	using FloatPoint = types::TPoint<float>;
 
-	typedef types::TSize<int> IntSize;
-	typedef types::TSize<float> FloatSize;
+	using IntSize = types::TSize<int>;
+	using FloatSize = types::TSize<float>;
 
-	typedef types::TRect<int> IntRect;
-	typedef types::TRect<float> FloatRect;
+	using IntRect = types::TRect<int>;
+	using FloatRect = types::TRect<float>;
 
-	typedef types::TCoord<int> IntCoord;
-	typedef types::TCoord<float> FloatCoord;
+	using IntCoord = types::TCoord<int>;
+	using FloatCoord = types::TCoord<float>;
+	using DoubleCoord = types::TCoord<double>;
 
 	typedef std::map<std::string, std::string> MapString;
-	typedef std::vector<std::string> VectorString;
+	using VectorString = std::vector<std::string>;
 	typedef std::pair<std::string, std::string> PairString;
-	typedef std::vector<PairString> VectorStringPairs;
+	using VectorStringPairs = std::vector<PairString>;
 
-	typedef char int8;
-	typedef short int16;
-	typedef int int32;
-	typedef unsigned char uint8;
-	typedef unsigned short uint16;
-	typedef unsigned int uint32;
-	typedef unsigned int uint;
+	using uint8 = unsigned char;
+	using uint16 = unsigned short;
+	using uint32 = unsigned int;
 
-	typedef unsigned int Char;
+	using Char = unsigned int;
 
 } // namespace MyGUI
 
-#endif // __MYGUI_TYPES_H__
+#endif // MYGUI_TYPES_H_

@@ -1,24 +1,9 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		11/2007
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_Button.h"
 #include "MyGUI_ResourceSkin.h"
@@ -30,6 +15,7 @@ namespace MyGUI
 
 	Button::Button() :
 		mIsMousePressed(false),
+		mIsKeyFocus(false),
 		mIsMouseFocus(false),
 		mStateSelected(false),
 		mImage(nullptr),
@@ -41,7 +27,7 @@ namespace MyGUI
 	{
 		Base::initialiseOverride();
 
-		///@wskin_child{Button, ImageBox, Image} Картинка, в режиме картинки отображает состояние кнопки.
+		///@wskin_child{Button, ImageBox, Image} РљР°СЂС‚РёРЅРєР°, РІ СЂРµР¶РёРјРµ РєР°СЂС‚РёРЅРєРё РѕС‚РѕР±СЂР°Р¶Р°РµС‚ СЃРѕСЃС‚РѕСЏРЅРёРµ РєРЅРѕРїРєРё.
 		assignWidget(mImage, "Image");
 	}
 
@@ -50,6 +36,20 @@ namespace MyGUI
 		mImage = nullptr;
 
 		Base::shutdownOverride();
+	}
+
+	void Button::onKeySetFocus(Widget* _old)
+	{
+		_setKeyFocus(true);
+
+		Base::onKeySetFocus(_old);
+	}
+
+	void Button::onKeyLostFocus(Widget* _new)
+	{
+		_setKeyFocus(false);
+
+		Base::onKeyLostFocus(_new);
 	}
 
 	void Button::onMouseSetFocus(Widget* _old)
@@ -92,7 +92,7 @@ namespace MyGUI
 	{
 		if (mStateSelected)
 		{
-			if (!getEnabled())
+			if (!getInheritedEnabled())
 			{
 				if (!_setState("disabled_checked"))
 					_setState("disabled");
@@ -102,7 +102,7 @@ namespace MyGUI
 				if (!_setState("pushed_checked"))
 					_setState("pushed");
 			}
-			else if (mIsMouseFocus)
+			else if (mIsMouseFocus || mIsKeyFocus)
 			{
 				if (!_setState("highlighted_checked"))
 					_setState("pushed");
@@ -112,11 +112,11 @@ namespace MyGUI
 		}
 		else
 		{
-			if (!getEnabled())
+			if (!getInheritedEnabled())
 				_setState("disabled");
 			else if (mIsMousePressed)
 				_setState("pushed");
-			else if (mIsMouseFocus)
+			else if (mIsMouseFocus || mIsKeyFocus)
 				_setState("highlighted");
 			else
 				_setState("normal");
@@ -132,6 +132,12 @@ namespace MyGUI
 		updateButtonState();
 	}
 
+	void Button::_setKeyFocus(bool _focus)
+	{
+		mIsKeyFocus = _focus;
+		updateButtonState();
+	}
+
 	void Button::_setMouseFocus(bool _focus)
 	{
 		mIsMouseFocus = _focus;
@@ -141,8 +147,9 @@ namespace MyGUI
 	void Button::baseUpdateEnable()
 	{
 		updateButtonState();
-		if (!getEnabled())
+		if (!getInheritedEnabled())
 		{
+			mIsKeyFocus = false;
 			mIsMouseFocus = false;
 		}
 	}
@@ -193,19 +200,19 @@ namespace MyGUI
 		if (_key == "StateSelected")
 			setStateSelected(utility::parseValue<bool>(_value));
 
-		/// @wproperty{Button, ModeImage, bool} Устанавливает режим работы кнопки, в котором она свои состояния берет из картинки.
+		/// @wproperty{Button, ModeImage, bool} РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СЂРµР¶РёРј СЂР°Р±РѕС‚С‹ РєРЅРѕРїРєРё, РІ РєРѕС‚РѕСЂРѕРј РѕРЅР° СЃРІРѕРё СЃРѕСЃС‚РѕСЏРЅРёСЏ Р±РµСЂРµС‚ РёР· РєР°СЂС‚РёРЅРєРё.
 		else if (_key == "ModeImage")
 			setModeImage(utility::parseValue<bool>(_value));
 
-		/// @wproperty{Button, ImageResource, string} Ссылка на ресурс картинки.
+		/// @wproperty{Button, ImageResource, string} РЎСЃС‹Р»РєР° РЅР° СЂРµСЃСѓСЂСЃ РєР°СЂС‚РёРЅРєРё.
 		else if (_key == "ImageResource")
 			setImageResource(_value);
 
-		/// @wproperty{Button, ImageGroup, string} Группа картинки в ресурсе.
+		/// @wproperty{Button, ImageGroup, string} Р“СЂСѓРїРїР° РєР°СЂС‚РёРЅРєРё РІ СЂРµСЃСѓСЂСЃРµ.
 		else if (_key == "ImageGroup")
 			setImageGroup(_value);
 
-		/// @wproperty{Button, ImageName, string} Имя картинки в ресурсе.
+		/// @wproperty{Button, ImageName, string} РРјСЏ РєР°СЂС‚РёРЅРєРё РІ СЂРµСЃСѓСЂСЃРµ.
 		else if (_key == "ImageName")
 			setImageName(_value);
 

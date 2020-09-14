@@ -1,24 +1,9 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		11/2007
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_ImageBox.h"
 #include "MyGUI_CoordConverter.h"
@@ -84,13 +69,7 @@ namespace MyGUI
 		mRectImage.right = _coord.left + _coord.width;
 		mRectImage.bottom = _coord.top + _coord.height;
 
-		// если тайл еще не установлен, то ставим тот что у координат
-		if (mSizeTile.empty()) mSizeTile = _coord.size();
-		//если индекса еще нет, то ставим 0
-		if (mIndexSelect == ITEM_NONE) mIndexSelect = 0;
-
-		recalcIndexes();
-		updateSelectIndex(mIndexSelect);
+		setImageRect(mRectImage);
 	}
 
 	void ImageBox::setImageRect(const IntRect& _rect)
@@ -283,12 +262,12 @@ namespace MyGUI
 		return iter->frame_rate;
 	}
 
-	void ImageBox::addItemFrameDublicate(size_t _index, size_t _indexSourceFrame)
+	void ImageBox::addItemFrameDuplicate(size_t _index, size_t _indexSourceFrame)
 	{
-		MYGUI_ASSERT_RANGE(_index, mItems.size(), "ImageBox::addItemFrameDublicate");
+		MYGUI_ASSERT_RANGE(_index, mItems.size(), "ImageBox::addItemFrameDuplicate");
 
 		VectorImages::iterator iter = mItems.begin() + _index;
-		MYGUI_ASSERT_RANGE(_indexSourceFrame, iter->images.size(), "ImageBox::addItemFrameDublicate");
+		MYGUI_ASSERT_RANGE(_indexSourceFrame, iter->images.size(), "ImageBox::addItemFrameDuplicate");
 		iter->images.push_back(iter->images[_indexSourceFrame]);
 	}
 
@@ -304,15 +283,15 @@ namespace MyGUI
 			CoordConverter::convertTextureCoord(_item, mSizeTexture));
 	}
 
-	void ImageBox::insertItemFrameDublicate(size_t _index, size_t _indexFrame, size_t _indexSourceFrame)
+	void ImageBox::insertItemFrameDuplicate(size_t _index, size_t _indexFrame, size_t _indexSourceFrame)
 	{
-		MYGUI_ASSERT_RANGE(_index, mItems.size(), "ImageBox::insertItemFrameDublicate");
+		MYGUI_ASSERT_RANGE(_index, mItems.size(), "ImageBox::insertItemFrameDuplicate");
 
 		VectorImages::iterator iter = mItems.begin() + _index;
-		MYGUI_ASSERT_RANGE_INSERT(_indexFrame, iter->images.size(), "ImageBox::insertItemFrameDublicate");
+		MYGUI_ASSERT_RANGE_INSERT(_indexFrame, iter->images.size(), "ImageBox::insertItemFrameDuplicate");
 		if (_indexFrame == ITEM_NONE) _indexFrame = iter->images.size() - 1;
 
-		MYGUI_ASSERT_RANGE(_indexSourceFrame, iter->images.size(), "ImageBox::insertItemFrameDublicate");
+		MYGUI_ASSERT_RANGE(_indexSourceFrame, iter->images.size(), "ImageBox::insertItemFrameDuplicate");
 
 		iter->images.insert(iter->images.begin() + _indexFrame, iter->images[_indexSourceFrame]);
 	}

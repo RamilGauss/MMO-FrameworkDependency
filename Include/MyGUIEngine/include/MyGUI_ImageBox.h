@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		11/2007
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_IMAGE_BOX_H__
-#define __MYGUI_IMAGE_BOX_H__
+#ifndef MYGUI_IMAGE_BOX_H_
+#define MYGUI_IMAGE_BOX_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_Widget.h"
@@ -34,7 +19,8 @@ namespace MyGUI
 		ImageBox widget description should be here.
 	*/
 	class MYGUI_EXPORT ImageBox :
-		public Widget
+		public Widget,
+		public MemberObsolete<ImageBox>
 	{
 		MYGUI_RTTI_DERIVED( ImageBox )
 
@@ -129,14 +115,14 @@ namespace MyGUI
 			@param _index Image item index
 			@param _indexSourceFrame Frame index of frame that we copying
 		*/
-		void addItemFrameDublicate(size_t _index, size_t _indexSourceFrame);
+		void addItemFrameDuplicate(size_t _index, size_t _indexSourceFrame);
 
 		/** Insert copy of frame (similar to ImageBox::insertItemFrame but we copy frame coordinates)
 			@param _index Image item index
 			@param _indexFrame Frame index where we insert frame
 			@param _indexSourceFrame Frame index of frame that we copying
 		*/
-		void insertItemFrameDublicate(size_t _index, size_t _indexFrame, size_t _indexSourceFrame);
+		void insertItemFrameDuplicate(size_t _index, size_t _indexFrame, size_t _indexSourceFrame);
 
 		/** Change frame
 			@param _index Image item index
@@ -195,9 +181,9 @@ namespace MyGUI
 		void setItemResourceInfo(ResourceImageSetPtr _resource, const std::string& _group, const std::string& _name);
 
 	protected:
-		virtual void shutdownOverride();
+		void shutdownOverride() override;
 
-		virtual void setPropertyOverride(const std::string& _key, const std::string& _value);
+		void setPropertyOverride(const std::string& _key, const std::string& _value) override;
 
 	private:
 		void frameEntered(float _frame);
@@ -233,4 +219,4 @@ namespace MyGUI
 
 } // namespace MyGUI
 
-#endif // __MYGUI_IMAGE_BOX_H__
+#endif // MYGUI_IMAGE_BOX_H_

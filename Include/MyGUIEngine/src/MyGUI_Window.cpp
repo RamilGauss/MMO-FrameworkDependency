@@ -1,24 +1,9 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		11/2007
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_Window.h"
 #include "MyGUI_Macros.h"
@@ -44,7 +29,6 @@ namespace MyGUI
 		mIsAutoAlpha(false),
 		mSnap(false),
 		mAnimateSmooth(false),
-		mClient(nullptr),
 		mMovable(true)
 	{
 	}
@@ -70,18 +54,15 @@ namespace MyGUI
 			main_move = true;
 		}
 
-		///@wskin_child{Window, Widget, Client} Клиентская зона.
-		assignWidget(mClient, "Client");
-		if (mClient != nullptr)
+		if (getClientWidget() != nullptr)
 		{
 			if (main_move)
 			{
-				mClient->setUserString("Scale", "1 1 0 0");
-				mClient->eventMouseButtonPressed += newDelegate(this, &Window::notifyMousePressed);
-				mClient->eventMouseButtonReleased += newDelegate(this, &Window::notifyMouseReleased);
-				mClient->eventMouseDrag += newDelegate(this, &Window::notifyMouseDrag);
+				getClientWidget()->setUserString("Scale", "1 1 0 0");
+				getClientWidget()->eventMouseButtonPressed += newDelegate(this, &Window::notifyMousePressed);
+				getClientWidget()->eventMouseButtonReleased += newDelegate(this, &Window::notifyMouseReleased);
+				getClientWidget()->eventMouseDrag += newDelegate(this, &Window::notifyMouseDrag);
 			}
-			setWidgetClient(mClient);
 		}
 
 		///@wskin_child{Window, TextBox, Caption} Caption for window.
@@ -133,7 +114,6 @@ namespace MyGUI
 
 	void Window::shutdownOverride()
 	{
-		mClient = nullptr;
 		mWidgetCaption = nullptr;
 
 		Base::shutdownOverride();
@@ -524,21 +504,6 @@ namespace MyGUI
 	void Window::setMaxSize(int _width, int _height)
 	{
 		setMaxSize(IntSize(_width, _height));
-	}
-
-	void Window::setPosition(int _left, int _top)
-	{
-		setPosition(IntPoint(_left, _top));
-	}
-
-	void Window::setSize(int _width, int _height)
-	{
-		setSize(IntSize(_width, _height));
-	}
-
-	void Window::setCoord(int _left, int _top, int _width, int _height)
-	{
-		setCoord(IntCoord(_left, _top, _width, _height));
 	}
 
 	bool Window::getSnap() const

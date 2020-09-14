@@ -1,24 +1,9 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		08/2010
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_BackwardCompatibility.h"
 #include "MyGUI_Button.h"
@@ -86,6 +71,15 @@ namespace MyGUI
 		if (static_cast<Button*>(this)->_getImageBox())
 			return static_cast<Button*>(this)->_getImageBox()->getImageIndex();
 		return ITEM_NONE;
+	}
+
+	void MemberObsolete<ImageBox>::addItemFrameDublicate(size_t _index, size_t _indexSourceFrame)
+	{
+		static_cast<ImageBox*>(this)->addItemFrameDuplicate(_index, _indexSourceFrame);
+	}
+	void MemberObsolete<ImageBox>::insertItemFrameDublicate(size_t _index, size_t _indexFrame, size_t _indexSourceFrame)
+	{
+		static_cast<ImageBox*>(this)->insertItemFrameDuplicate(_index, _indexFrame, _indexSourceFrame);
 	}
 
 
@@ -918,10 +912,10 @@ namespace MyGUI
 				layer = node->findAttribute("layer");
 				pointer = node->findAttribute("default");
 
-				// ñîõðàíÿåì
+				// ÑÐ¾Ñ…Ñ€Ð°Ð½ÑÐµÐ¼
 				std::string shared_text = node->findAttribute("texture");
 
-				// áåðåì äåòåé è êðóòèìñÿ, îñíîâíîé öèêë
+				// Ð±ÐµÑ€ÐµÐ¼ Ð´ÐµÑ‚ÐµÐ¹ Ð¸ ÐºÑ€ÑƒÑ‚Ð¸Ð¼ÑÑ, Ð¾ÑÐ½Ð¾Ð²Ð½Ð¾Ð¹ Ñ†Ð¸ÐºÐ»
 				xml::ElementEnumerator info = node->getElementEnumerator();
 				while (info.next("Info"))
 				{
@@ -1008,7 +1002,7 @@ namespace MyGUI
 	{
 		std::string resourceCategory = ResourceManager::getInstance().getCategoryName();
 
-		// áåðåì äåòåé è êðóòèìñÿ, îñíîâíîé öèêë ñî ñêèíàìè
+		// Ð±ÐµÑ€ÐµÐ¼ Ð´ÐµÑ‚ÐµÐ¹ Ð¸ ÐºÑ€ÑƒÑ‚Ð¸Ð¼ÑÑ, Ð¾ÑÐ½Ð¾Ð²Ð½Ð¾Ð¹ Ñ†Ð¸ÐºÐ» ÑÐ¾ ÑÐºÐ¸Ð½Ð°Ð¼Ð¸
 		xml::ElementEnumerator skin = _node->getElementEnumerator();
 		while (skin.next(_tag))
 		{
@@ -1050,7 +1044,7 @@ namespace MyGUI
 
 #ifndef MYGUI_DONT_USE_OBSOLETE
 
-	std::string convertAlignToDirection(const std::string& _value)
+	static std::string convertAlignToDirection(const std::string& _value)
 	{
 		Align align = utility::parseValue<Align>(_value);
 		if (align == Align::Right)
@@ -1062,14 +1056,14 @@ namespace MyGUI
 		return FlowDirection(FlowDirection::LeftToRight).print();
 	}
 
-	std::string convertRectToCoord(const std::string& _value)
+	static std::string convertRectToCoord(const std::string& _value)
 	{
 		IntRect rect = IntRect::parse(_value);
 		IntCoord coord(rect.left, rect.top, rect.width(), rect.height());
 		return coord.print();
 	}
 
-	typedef std::set<std::string> SetString;
+	using SetString = std::set<std::string>;
 	static MapString mPropertyRename;
 	static SetString mPropertyIgnore;
 	static MapString mSkinRename;

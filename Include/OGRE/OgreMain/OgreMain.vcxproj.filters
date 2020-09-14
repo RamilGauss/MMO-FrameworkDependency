@@ -1512,6 +1512,7 @@
       <Filter>Source Files\nedmalloc</Filter>
     </Text>
     <Text Include="LogChange.txt" />
+    <Text Include="..\conanfile.txt" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\WIN32\ogre.ico">

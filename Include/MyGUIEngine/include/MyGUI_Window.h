@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		11/2007
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_WINDOW_H__
-#define __MYGUI_WINDOW_H__
+#ifndef MYGUI_WINDOW_H_
+#define MYGUI_WINDOW_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_TextBox.h"
@@ -49,7 +34,7 @@ namespace MyGUI
 		Window();
 
 		/** @copydoc Widget::setVisible */
-		virtual void setVisible(bool _value);
+		void setVisible(bool _value) override;
 
 		/** Hide or show window smooth */
 		void setVisibleSmooth(bool _value);
@@ -62,9 +47,9 @@ namespace MyGUI
 		bool getAutoAlpha() const;
 
 		/** Set window caption */
-		virtual void setCaption(const UString& _value);
+		void setCaption(const UString& _value) override;
 		/** Get window caption */
-		virtual const UString& getCaption();
+		const UString& getCaption() override;
 
 		/** Get window caption widget */
 		TextBox* getCaptionWidget();
@@ -84,18 +69,15 @@ namespace MyGUI
 		IntSize getMaxSize();
 
 		//! @copydoc Widget::setPosition(const IntPoint& _value)
-		virtual void setPosition(const IntPoint& _value);
+		void setPosition(const IntPoint& _value) override;
 		//! @copydoc Widget::setSize(const IntSize& _value)
-		virtual void setSize(const IntSize& _value);
+		void setSize(const IntSize& _value) override;
 		//! @copydoc Widget::setCoord(const IntCoord& _value)
-		virtual void setCoord(const IntCoord& _value);
+		void setCoord(const IntCoord& _value) override;
 
-		/** @copydoc Widget::setPosition(int _left, int _top) */
-		void setPosition(int _left, int _top);
-		/** @copydoc Widget::setSize(int _width, int _height) */
-		void setSize(int _width, int _height);
-		/** @copydoc Widget::setCoord(int _left, int _top, int _width, int _height) */
-		void setCoord(int _left, int _top, int _width, int _height);
+		using Widget::setPosition;
+		using Widget::setSize;
+		using Widget::setCoord;
 
 		/** Enable or disable snap to borders mode */
 		void setSnap(bool _value);
@@ -116,25 +98,23 @@ namespace MyGUI
 			@param _sender widget that called this event
 			@param _name of pressed button
 		*/
-		EventPair<EventHandle_WidgetString, EventHandle_WindowPtrCStringRef>
-			eventWindowButtonPressed;
+		EventPair<EventHandle_WidgetString, EventHandle_WindowPtrCStringRef> eventWindowButtonPressed;
 
 		/** Event : Window coordinate changed (window was resized or moved).\n
 			signature : void method(MyGUI::Window* _sender)
 			@param _sender widget that called this event
 		*/
-		EventPair<EventHandle_WidgetVoid, EventHandle_WindowPtr>
-			eventWindowChangeCoord;
+		EventPair<EventHandle_WidgetVoid, EventHandle_WindowPtr> eventWindowChangeCoord;
 
 	protected:
-		virtual void initialiseOverride();
-		virtual void shutdownOverride();
+		void initialiseOverride() override;
+		void shutdownOverride() override;
 
-		void onMouseChangeRootFocus(bool _focus);
-		void onKeyChangeRootFocus(bool _focus);
-		void onMouseDrag(int _left, int _top, MouseButton _id);
-		void onMouseButtonPressed(int _left, int _top, MouseButton _id);
-		void onMouseButtonReleased(int _left, int _top, MouseButton _id);
+		void onMouseChangeRootFocus(bool _focus) override;
+		void onKeyChangeRootFocus(bool _focus) override;
+		void onMouseDrag(int _left, int _top, MouseButton _id) override;
+		void onMouseButtonPressed(int _left, int _top, MouseButton _id) override;
+		void onMouseButtonReleased(int _left, int _top, MouseButton _id) override;
 
 		void notifyMousePressed(MyGUI::Widget* _sender, int _left, int _top, MouseButton _id);
 		void notifyMouseReleased(MyGUI::Widget* _sender, int _left, int _top, MouseButton _id);
@@ -147,7 +127,7 @@ namespace MyGUI
 
 		void animateStop(Widget* _widget, ControllerItem* _controller);
 
-		virtual void setPropertyOverride(const std::string& _key, const std::string& _value);
+		void setPropertyOverride(const std::string& _key, const std::string& _value) override;
 
 	private:
 		float getAlphaVisible() const;
@@ -177,10 +157,9 @@ namespace MyGUI
 		IntCoord mCurrentActionScale;
 		bool mAnimateSmooth;
 
-		Widget* mClient;
 		bool mMovable;
 	};
 
 } // namespace MyGUI
 
-#endif // __MYGUI_WINDOW_H__
+#endif // MYGUI_WINDOW_H_

@@ -1,24 +1,9 @@
-/*!
-	@file
-	@author		George Evmenov
-	@date		12/2010
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_GeometryUtility.h"
 
@@ -58,17 +43,17 @@ namespace MyGUI
 				case Left:
 				case Right:
 					// both inside
-					if (invert* v0.left >= invert* _sideCoord && invert* v1.left >= invert * _sideCoord)
+					if (invert * v0.left >= invert * _sideCoord && invert * v1.left >= invert * _sideCoord)
 						newVerticies.push_back(v0);
 					// intersect side (1st vertex in)
-					else if (invert* v0.left >= invert * _sideCoord && invert * v1.left < invert * _sideCoord)
+					else if (invert * v0.left >= invert * _sideCoord && invert * v1.left < invert * _sideCoord)
 					{
 						newVerticies.push_back(v0);
 						float c = (v0.left - _sideCoord) / (_sideCoord - v1.left);
 						newVerticies.push_back(FloatPoint((float)_sideCoord, (v0.top + c * v1.top) / (c + 1)));
 					}
 					// intersect side (2nd vertex in)
-					else if (invert* v0.left <= invert * _sideCoord && invert * v1.left > invert * _sideCoord)
+					else if (invert * v0.left <= invert * _sideCoord && invert * v1.left > invert * _sideCoord)
 					{
 						float c = (v0.left - _sideCoord) / (_sideCoord - v1.left);
 						newVerticies.push_back(FloatPoint((float)_sideCoord, (v0.top + c * v1.top) / (c + 1)));
@@ -78,17 +63,17 @@ namespace MyGUI
 				case Top:
 				case Bottom:
 					// both inside
-					if (invert* v0.top >= invert* _sideCoord && invert* v1.top >= invert * _sideCoord)
+					if (invert * v0.top >= invert * _sideCoord && invert * v1.top >= invert * _sideCoord)
 						newVerticies.push_back(v0);
 					// intersect side (1st vertex in)
-					else if (invert* v0.top >= invert * _sideCoord && invert * v1.top < invert * _sideCoord)
+					else if (invert * v0.top >= invert * _sideCoord && invert * v1.top < invert * _sideCoord)
 					{
 						newVerticies.push_back(v0);
 						float c = (v0.top - _sideCoord) / (_sideCoord - v1.top);
 						newVerticies.push_back(FloatPoint((v0.left + c * v1.left) / (c + 1), (float)_sideCoord));
 					}
 					// intersect side (2nd vertex in)
-					else if (invert* v0.top <= invert * _sideCoord && invert * v1.top > invert * _sideCoord)
+					else if (invert * v0.top <= invert * _sideCoord && invert * v1.top > invert * _sideCoord)
 					{
 						float c = (v0.top - _sideCoord) / (_sideCoord - v1.top);
 						newVerticies.push_back(FloatPoint((v0.left + c * v1.left) / (c + 1), (float)_sideCoord));
@@ -114,16 +99,14 @@ namespace MyGUI
 				return FloatPoint();
 			return FloatPoint(
 				(point.top * dirX.left - point.left * dirX.top) / div,
-				(point.left * dirY.top - point.top * dirY.left) / div
-				);
+				(point.left * dirY.top - point.top * dirY.left) / div);
 		}
 
 		FloatPoint getUVFromPositionInsideRect(const FloatPoint& _point, const FloatPoint& _v0, const FloatPoint& _v1, const FloatPoint& _baseUV)
 		{
 			return FloatPoint(
 				_baseUV.left + _point.left * _v0.left + _point.top * _v1.left,
-				_baseUV.top  + _point.left * _v0.top  + _point.top * _v1.top
-				);
+				_baseUV.top  + _point.left * _v0.top  + _point.top * _v1.top);
 		}
 
 	} // namespace geometry_utility

@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		11/2007
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_WIDGET_H__
-#define __MYGUI_WIDGET_H__
+#ifndef MYGUI_WIDGET_H_
+#define MYGUI_WIDGET_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_Any.h"
@@ -124,11 +109,11 @@ namespace MyGUI
 		}
 
 		/** Set widget position (position of left top corner) */
-		virtual void setPosition(const IntPoint& _value);
+		void setPosition(const IntPoint& _value) override;
 		/** Set widget size */
-		virtual void setSize(const IntSize& _value);
+		void setSize(const IntSize& _value) override;
 		/** Set widget position and size */
-		virtual void setCoord(const IntCoord& _value);
+		void setCoord(const IntCoord& _value) override;
 
 		/** See Widget::setPosition(const IntPoint& _pos) */
 		void setPosition(int _left, int _top);
@@ -158,6 +143,14 @@ namespace MyGUI
 		virtual void setVisible(bool _value);
 		/** Return true if visible */
 		bool getVisible() const;
+
+		/** Set child widget rendering depth for ordering child widgets.
+			Widget with higher depth is rendered below widget with lower depth.
+			Available only for child widgets. For root widgets use layer property instead.
+		*/
+		void setDepth(int _value);
+		/** Get child widget rendering depth */
+		int getDepth() const;
 
 		/** Return widget's visibility based on it's and parents visibility. */
 		bool getInheritedVisible() const;
@@ -224,7 +217,7 @@ namespace MyGUI
 		/** Is widget enabled */
 		bool getEnabled() const;
 
-		/** Is widget enabled and all it's parents in hierarchy is enabled. */
+		/** Is widget enabled and all it's parents in hierarchy are enabled. */
 		bool getInheritedEnabled() const;
 
 		/** Get rectangle where child widgets placed */
@@ -232,6 +225,7 @@ namespace MyGUI
 
 		/** Get client area widget or nullptr if widget don't have client */
 		Widget* getClientWidget();
+		const Widget* getClientWidget() const;
 
 		/** Detach widget from widgets hierarchy
 			@param _layer Attach to specified layer (if any)
@@ -270,15 +264,13 @@ namespace MyGUI
 			@param _key
 			@param _value
 		*/
-		EventHandle_WidgetStringString
-			eventChangeProperty;
+		EventHandle_WidgetStringString eventChangeProperty;
 
 		/** Event : Widget coordinate changed (widget was resized or moved).\n
 			signature : void method(MyGUI::Widget* _sender)
 			@param _sender widget that called this event
 		*/
-		EventHandle_WidgetVoid
-			eventChangeCoord;
+		EventHandle_WidgetVoid eventChangeCoord;
 
 		/*internal:*/
 		// метод для запроса номера айтема и контейнера
@@ -306,9 +298,12 @@ namespace MyGUI
 
 		bool _setWidgetState(const std::string& _value);
 
+		// перерисовывает детей
+		void _updateChilds();
+
 	protected:
 		// все создание только через фабрику
-		virtual ~Widget();
+		~Widget() override = default;
 
 		virtual void shutdownOverride();
 		virtual void initialiseOverride();
@@ -327,11 +322,11 @@ namespace MyGUI
 		virtual void baseUpdateEnable();
 
 		// наследуемся он LayerInfo
-		virtual ILayerItem* getLayerItemByPoint(int _left, int _top) const;
-		virtual const IntCoord& getLayerItemCoord() const;
+		ILayerItem* getLayerItemByPoint(int _left, int _top) const override;
+		const IntCoord& getLayerItemCoord() const override;
 
 		template <typename T>
-		void assignWidget(T * & _widget, const std::string& _name)
+		void assignWidget(T*& _widget, const std::string& _name)
 		{
 			_widget = nullptr;
 			for (VectorWidgetPtr::iterator iter = mWidgetChildSkin.begin(); iter != mWidgetChildSkin.end(); ++iter)
@@ -353,12 +348,12 @@ namespace MyGUI
 		virtual void onWidgetDestroy(Widget* _widget);
 
 		void setWidgetClient(Widget* _widget);
+		/// If there is client widget return it, otherwise return this
+		Widget* _getClientWidget();
 
 		virtual void setPropertyOverride(const std::string& _key, const std::string& _value);
 
 	private:
-		void frameEntered(float _frame);
-
 		const WidgetInfo* initialiseWidgetSkinBase(ResourceSkin* _info, ResourceLayout* _templateInfo);
 		void shutdownWidgetSkinBase();
 
@@ -383,7 +378,9 @@ namespace MyGUI
 
 		void setSkinProperty(ResourceSkin* _info);
 
-		virtual void resizeLayerItemView(const IntSize& _oldView, const IntSize& _newView);
+		void resizeLayerItemView(const IntSize& _oldView, const IntSize& _newView) override;
+
+		void addWidget(Widget* _widget);
 
 	private:
 		// клиентская зона окна
@@ -419,8 +416,9 @@ namespace MyGUI
 
 		Align mAlign;
 		bool mVisible;
+		int mDepth;
 	};
 
 } // namespace MyGUI
 
-#endif // __MYGUI_WIDGET_H__
+#endif // MYGUI_WIDGET_H_

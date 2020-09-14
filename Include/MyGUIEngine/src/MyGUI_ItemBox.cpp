@@ -1,24 +1,9 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		11/2007
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_ItemBox.h"
 #include "MyGUI_Button.h"
@@ -26,7 +11,6 @@
 #include "MyGUI_ResourceSkin.h"
 #include "MyGUI_InputManager.h"
 #include "MyGUI_Gui.h"
-#include "MyGUI_WidgetTranslate.h"
 #include "MyGUI_WidgetManager.h"
 
 namespace MyGUI
@@ -60,14 +44,12 @@ namespace MyGUI
 		if (isUserString("DragLayer"))
 			mDragLayer = getUserString("DragLayer");
 
-		///@wskin_child{ItemBox, Widget, Client} Клиентская зона.
-		assignWidget(mClient, "Client");
-		if (mClient != nullptr)
+		assignWidget(mScrollViewClient, "Client");
+		if (getClientWidget() != nullptr)
 		{
-			mClient->eventMouseWheel += newDelegate(this, &ItemBox::notifyMouseWheel);
-			mClient->eventMouseButtonPressed += newDelegate(this, &ItemBox::notifyMouseButtonPressed);
-			mClient->eventMouseButtonReleased += newDelegate(this, &ItemBox::notifyMouseButtonReleased);
-			setWidgetClient(mClient);
+			getClientWidget()->eventMouseWheel += newDelegate(this, &ItemBox::notifyMouseWheel);
+			getClientWidget()->eventMouseButtonPressed += newDelegate(this, &ItemBox::notifyMouseButtonPressed);
+			getClientWidget()->eventMouseButtonReleased += newDelegate(this, &ItemBox::notifyMouseButtonReleased);
 		}
 
 		///@wskin_child{ItemBox, ScrollBar, VScroll} Вертикальная полоса прокрутки.
@@ -85,8 +67,8 @@ namespace MyGUI
 		}
 
 		// подписываем клиент для драгэндропа
-		if (mClient != nullptr)
-			mClient->_setContainer(this);
+		if (getClientWidget() != nullptr)
+			getClientWidget()->_setContainer(this);
 
 		requestItemSize();
 
@@ -98,7 +80,6 @@ namespace MyGUI
 	{
 		mVScroll = nullptr;
 		mHScroll = nullptr;
-		mClient = nullptr;
 
 		Base::shutdownOverride();
 	}
@@ -274,7 +255,7 @@ namespace MyGUI
 		const IntPoint& point = InputManager::getInstance().getMousePositionByLayer();
 
 		// сначала проверяем клиентскую зону
-		const IntRect& rect = _getClientAbsoluteRect();
+		const IntRect& rect = _getClientWidget()->getAbsoluteRect();
 		if ((point.left < rect.left) || (point.left > rect.right) || (point.top < rect.top) || (point.top > rect.bottom))
 		{
 			return;
@@ -344,13 +325,12 @@ namespace MyGUI
 		_resetContainer(true);
 	}
 
-	void ItemBox::insertItemAt(size_t _index, Any _data)
+	void ItemBox::insertItemAt(size_t _index, Any _data, bool update)
 	{
 		MYGUI_ASSERT_RANGE_INSERT(_index, mItemsInfo.size(), "ItemBox::insertItemAt");
 		if (_index == ITEM_NONE) _index = mItemsInfo.size();
 
 		_resetContainer(false);
-
 		resetCurrentActiveItem();
 
 		mItemsInfo.insert(mItemsInfo.begin() + _index, ItemDataInfo(_data));
@@ -364,15 +344,18 @@ namespace MyGUI
 			}
 		}
 
-		updateScrollSize();
-		updateScrollPosition();
+		if (update)
+		{
+			updateScrollSize();
+			updateScrollPosition();
 
-		findCurrentActiveItem();
+			findCurrentActiveItem();
 
-		_updateAllVisible(true);
+			_updateAllVisible(true);
+		}
 	}
 
-	void ItemBox::removeItemAt(size_t _index)
+	void ItemBox::removeItemAt(size_t _index, bool update)
 	{
 		MYGUI_ASSERT_RANGE(_index, mItemsInfo.size(), "ItemBox::removeItemAt");
 
@@ -394,12 +377,15 @@ namespace MyGUI
 			}
 		}
 
-		updateScrollSize();
-		updateScrollPosition();
+		if (update)
+		{
+			updateScrollSize();
+			updateScrollPosition();
 
-		findCurrentActiveItem();
+			findCurrentActiveItem();
 
-		_updateAllVisible(true);
+			_updateAllVisible(true);
+		}
 	}
 
 	void ItemBox::removeAllItems()
@@ -870,24 +856,14 @@ namespace MyGUI
 		return Align::Default;
 	}
 
-	IntRect ItemBox::_getClientAbsoluteRect()
-	{
-		return _getClientWidget()->getAbsoluteRect();
-	}
-
-	Widget* ItemBox::_getClientWidget()
-	{
-		return mClient == nullptr ? this : mClient;
-	}
-
 	size_t ItemBox::getItemCount() const
 	{
 		return mItemsInfo.size();
 	}
 
-	void ItemBox::addItem(Any _data)
+	void ItemBox::addItem(Any _data, bool update)
 	{
-		insertItemAt(ITEM_NONE, _data);
+		insertItemAt(ITEM_NONE, _data, update);
 	}
 
 	size_t ItemBox::getIndexSelected() const
@@ -915,26 +891,41 @@ namespace MyGUI
 		return mItemDrag;
 	}
 
-	void ItemBox::setPosition(int _left, int _top)
+	void ItemBox::setVisibleVScroll(bool _value)
 	{
-		setPosition(IntPoint(_left, _top));
+		mVisibleVScroll = _value;
+		updateFromResize();
 	}
 
-	void ItemBox::setSize(int _width, int _height)
+	void ItemBox::setVisibleHScroll(bool _value)
 	{
-		setSize(IntSize(_width, _height));
+		mVisibleHScroll = _value;
+		updateFromResize();
 	}
 
-	void ItemBox::setCoord(int _left, int _top, int _width, int _height)
+	bool ItemBox::isVisibleVScroll() const
 	{
-		setCoord(IntCoord(_left, _top, _width, _height));
+		return mVisibleVScroll;
+	}
+
+	bool ItemBox::isVisibleHScroll() const
+	{
+		return mVisibleHScroll;
 	}
 
 	void ItemBox::setPropertyOverride(const std::string& _key, const std::string& _value)
 	{
-		/// @wproperty{ItemBox, VerticalAlignment, bool} Вертикальное выравнивание.
+		/// @wproperty{ItemBox, VerticalAlignment, bool} Vertical or horizontal alignment.
 		if (_key == "VerticalAlignment")
 			setVerticalAlignment(utility::parseValue<bool>(_value));
+
+		/// @wproperty{ItemBox, VisibleVScroll, bool} Vertical scroll bar visibility.
+		else if (_key == "VisibleVScroll")
+			setVisibleVScroll(utility::parseValue<bool>(_value));
+
+		/// @wproperty{ItemBox, VisibleHScroll, bool} Horizontal scroll bar visibility.
+		else if (_key == "VisibleHScroll")
+			setVisibleHScroll(utility::parseValue<bool>(_value));
 
 		else
 		{

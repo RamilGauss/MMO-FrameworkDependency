@@ -1,24 +1,9 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		11/2007
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_Widget.h"
 #include "MyGUI_Gui.h"
@@ -55,11 +40,8 @@ namespace MyGUI
 		mWidgetStyle(WidgetStyle::Child),
 		mContainer(nullptr),
 		mAlign(Align::Default),
-		mVisible(true)
-	{
-	}
-
-	Widget::~Widget()
+		mVisible(true),
+		mDepth(0)
 	{
 	}
 
@@ -140,6 +122,8 @@ namespace MyGUI
 
 	void Widget::_shutdown()
 	{
+		setUserData(Any::Null);
+
 		// витр метод для наследников
 		shutdownOverride();
 
@@ -318,7 +302,7 @@ namespace MyGUI
 			else
 			{
 				widget = WidgetManager::getInstance().createWidget(_style, _type, _skin, _coord, this, _style == WidgetStyle::Popup ? nullptr : this, _name);
-				mWidgetChild.push_back(widget);
+				addWidget(widget);
 			}
 		}
 
@@ -362,7 +346,6 @@ namespace MyGUI
 
 				return;
 			}
-
 		}
 		// мы не обрезаны и были нормальные
 		else if (!mIsMargin)
@@ -441,7 +424,6 @@ namespace MyGUI
 
 	IntCoord Widget::getClientCoord()
 	{
-		MYGUI_ASSERT(mWidgetClient != this, "mWidgetClient can not be this widget");
 		if (mWidgetClient != nullptr)
 			return mWidgetClient->getCoord();
 		return IntCoord(0, 0, mCoord.width, mCoord.height);
@@ -500,7 +482,7 @@ namespace MyGUI
 			if (item != nullptr)
 				return item;
 		}
-		// спрашиваем у детишек скна
+		// спрашиваем у детишек скина
 		for (VectorWidgetPtr::const_reverse_iterator widget = mWidgetChildSkin.rbegin(); widget != mWidgetChildSkin.rend(); ++widget)
 		{
 			ILayerItem* item = (*widget)->getLayerItemByPoint(_left - mCoord.left, _top - mCoord.top);
@@ -530,15 +512,23 @@ namespace MyGUI
 
 	void Widget::_forcePick(Widget* _widget)
 	{
-		MYGUI_ASSERT(mWidgetClient != this, "mWidgetClient can not be this widget");
 		if (mWidgetClient != nullptr)
-			mWidgetClient->_forcePick(_widget);
-
-		VectorWidgetPtr::iterator item = std::remove(mWidgetChild.begin(), mWidgetChild.end(), _widget);
-		if (item != mWidgetChild.end())
 		{
-			mWidgetChild.erase(item);
-			mWidgetChild.insert(mWidgetChild.begin(), _widget);
+			mWidgetClient->_forcePick(_widget);
+			return;
+		}
+
+		VectorWidgetPtr::iterator iter = std::find(mWidgetChild.begin(), mWidgetChild.end(), _widget);
+		if (iter == mWidgetChild.end())
+			return;
+
+		VectorWidgetPtr copy = mWidgetChild;
+		for (VectorWidgetPtr::iterator widget = copy.begin(); widget != copy.end(); ++widget)
+		{
+			if ((*widget) == _widget)
+				(*widget)->setDepth(-1);
+			else if ((*widget)->getDepth() == -1)
+				(*widget)->setDepth(0);
 		}
 	}
 
@@ -546,7 +536,6 @@ namespace MyGUI
 	{
 		if (_name == mName)
 			return this;
-		MYGUI_ASSERT(mWidgetClient != this, "mWidgetClient can not be this widget");
 		if (mWidgetClient != nullptr)
 			return mWidgetClient->findWidget(_name);
 
@@ -937,7 +926,6 @@ namespace MyGUI
 
 	EnumeratorWidgetPtr Widget::getEnumerator() const
 	{
-		MYGUI_ASSERT(mWidgetClient != this, "mWidgetClient can not be this widget");
 		if (mWidgetClient != nullptr)
 			return mWidgetClient->getEnumerator();
 		return Enumerator<VectorWidgetPtr>(mWidgetChild.begin(), mWidgetChild.end());
@@ -945,7 +933,6 @@ namespace MyGUI
 
 	size_t Widget::getChildCount()
 	{
-		MYGUI_ASSERT(mWidgetClient != this, "mWidgetClient can not be this widget");
 		if (mWidgetClient != nullptr)
 			return mWidgetClient->getChildCount();
 		return mWidgetChild.size();
@@ -953,7 +940,6 @@ namespace MyGUI
 
 	Widget* Widget::getChildAt(size_t _index)
 	{
-		MYGUI_ASSERT(mWidgetClient != this, "mWidgetClient can not be this widget");
 		if (mWidgetClient != nullptr)
 			return mWidgetClient->getChildAt(_index);
 		MYGUI_ASSERT_RANGE(_index, mWidgetChild.size(), "Widget::getChildAt");
@@ -962,7 +948,7 @@ namespace MyGUI
 
 	void Widget::baseUpdateEnable()
 	{
-		if (mEnabled)
+		if (getInheritedEnabled())
 			_setWidgetState("normal");
 		else
 			_setWidgetState("disabled");
@@ -991,6 +977,8 @@ namespace MyGUI
 
 		if (!value && InputManager::getInstance().getMouseFocusWidget() == this)
 			InputManager::getInstance()._resetMouseFocusWidget();
+		if (!value && InputManager::getInstance().getKeyFocusWidget() == this)
+			InputManager::getInstance().resetKeyFocusWidget();
 	}
 
 	void Widget::setEnabled(bool _value)
@@ -1004,8 +992,8 @@ namespace MyGUI
 
 	void Widget::_updateEnabled()
 	{
-		mInheritsEnabled = mParent == nullptr || (mParent->getEnabled() && mParent->getInheritedEnabled());
-		bool value = mEnabled && mInheritsEnabled;
+		mInheritsEnabled = mParent == nullptr || (mParent->getInheritedEnabled());
+		mInheritsEnabled = mInheritsEnabled && mEnabled;
 
 		for (VectorWidgetPtr::iterator iter = mWidgetChild.begin(); iter != mWidgetChild.end(); ++iter)
 			(*iter)->_updateEnabled();
@@ -1014,7 +1002,7 @@ namespace MyGUI
 
 		baseUpdateEnable();
 
-		if (!value)
+		if (!mInheritsEnabled)
 			InputManager::getInstance().unlinkWidget(this);
 	}
 
@@ -1051,7 +1039,7 @@ namespace MyGUI
 	{
 		VectorWidgetPtr::iterator iter = std::find(mWidgetChild.begin(), mWidgetChild.end(), _widget);
 		MYGUI_ASSERT(iter == mWidgetChild.end(), "widget already exist");
-		mWidgetChild.push_back(_widget);
+		addWidget(_widget);
 	}
 
 	void Widget::_unlinkChildWidget(Widget* _widget)
@@ -1067,6 +1055,8 @@ namespace MyGUI
 
 	void Widget::initialiseOverride()
 	{
+		///@wskin_child{Widget, Widget, Client} Client area, all child widgets are created inside this area.
+		assignWidget(mWidgetClient, "Client");
 	}
 
 	void Widget::setSkinProperty(ResourceSkin* _info)
@@ -1109,7 +1099,6 @@ namespace MyGUI
 		if (_name == mName)
 			_result.push_back(this);
 
-		MYGUI_ASSERT(mWidgetClient != this, "mWidgetClient can not be this widget");
 		if (mWidgetClient != nullptr)
 		{
 			mWidgetClient->findWidgets(_name, _result);
@@ -1137,7 +1126,13 @@ namespace MyGUI
 
 	void Widget::setWidgetClient(Widget* _widget)
 	{
+		MYGUI_ASSERT(mWidgetClient != this, "mWidgetClient can not be this widget");
 		mWidgetClient = _widget;
+	}
+
+	Widget* Widget::_getClientWidget()
+	{
+		return getClientWidget() == nullptr ? this : getClientWidget();
 	}
 
 	Widget* Widget::_createSkinWidget(WidgetStyle _style, const std::string& _type, const std::string& _skin, const IntCoord& _coord, Align _align, const std::string& _layer, const std::string& _name)
@@ -1162,6 +1157,10 @@ namespace MyGUI
 		/// @wproperty{Widget, Visible, bool} Show or hide widget.
 		else if (_key == "Visible")
 			setVisible(utility::parseValue<bool>(_value));
+
+		/// @wproperty{Widget, Depth, int} Child widget rendering depth.
+		else if (_key == "Depth")
+			setDepth(utility::parseValue<int>(_value));
 
 		/// @wproperty{Widget, Alpha, float} Прозрачность виджета от 0 до 1.
 		else if (_key == "Alpha")
@@ -1205,7 +1204,7 @@ namespace MyGUI
 
 		else
 		{
-			MYGUI_LOG(Warning, "Widget property '" << _key << "' not found" << " [" << LayoutManager::getInstance().getCurrentLayout() << "]");
+			MYGUI_LOG(Warning, "Widget '" << getName() << "|" << getTypeName() << "' have unknown property '" << _key << "' " << " [" << LayoutManager::getInstance().getCurrentLayout() << "]");
 			return;
 		}
 
@@ -1292,6 +1291,11 @@ namespace MyGUI
 		return mWidgetClient;
 	}
 
+	const Widget* Widget::getClientWidget() const
+	{
+		return mWidgetClient;
+	}
+
 	WidgetStyle Widget::getWidgetStyle() const
 	{
 		return mWidgetStyle;
@@ -1340,6 +1344,67 @@ namespace MyGUI
 	void Widget::resizeLayerItemView(const IntSize& _oldView, const IntSize& _newView)
 	{
 		_setAlign(_oldView, _newView);
+	}
+
+	void Widget::setDepth(int _value)
+	{
+		if (mDepth == _value)
+			return;
+
+		mDepth = _value;
+
+		if (mParent != nullptr)
+		{
+			mParent->_unlinkChildWidget(this);
+			mParent->_linkChildWidget(this);
+			mParent->_updateChilds();
+		}
+	}
+
+	int Widget::getDepth() const
+	{
+		return mDepth;
+	}
+
+	void Widget::addWidget(Widget* _widget)
+	{
+		// сортировка глубины от большого к меньшему
+
+		int depth = _widget->getDepth();
+
+		for (size_t index = 0; index < mWidgetChild.size(); ++index)
+		{
+			Widget* widget = mWidgetChild[index];
+			if (widget->getDepth() < depth)
+			{
+				mWidgetChild.insert(mWidgetChild.begin() + index, _widget);
+				_updateChilds();
+				return;
+			}
+		}
+
+		mWidgetChild.push_back(_widget);
+	}
+
+	void Widget::_updateChilds()
+	{
+		for (VectorWidgetPtr::iterator widget = mWidgetChild.begin(); widget != mWidgetChild.end(); ++widget)
+		{
+			if ((*widget)->getWidgetStyle() == WidgetStyle::Child)
+			{
+				(*widget)->detachFromLayerItemNode(true);
+				removeChildItem((*widget));
+			}
+		}
+
+		for (VectorWidgetPtr::iterator widget = mWidgetChild.begin(); widget != mWidgetChild.end(); ++widget)
+		{
+			if ((*widget)->getWidgetStyle() == WidgetStyle::Child)
+			{
+				addChildItem((*widget));
+				(*widget)->_updateView();
+			}
+		}
 	}
 
 } // namespace MyGUI

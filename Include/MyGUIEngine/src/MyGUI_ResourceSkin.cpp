@@ -1,24 +1,9 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		26/2009
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_ResourceSkin.h"
 #include "MyGUI_FactoryManager.h"
@@ -60,7 +45,7 @@ namespace MyGUI
 		// вспомогательный класс для биндинга сабскинов
 		SubWidgetBinding bind;
 
-		// поддержка замены тегов в скинах
+		// tags replacement support for Skins
 		if (_version >= Version(1, 1))
 		{
 			texture = localizator.replaceTags(texture);
@@ -85,7 +70,7 @@ namespace MyGUI
 				if (!basis->findAttribute("value", value))
 					continue;
 
-				// поддержка замены тегов в скинах
+				// tags replacement support for Skins
 				if (_version >= Version(1, 1))
 				{
 					value = localizator.replaceTags(value);
@@ -103,8 +88,7 @@ namespace MyGUI
 					IntCoord::parse(basis->findAttribute("offset")),
 					Align::parse(basis->findAttribute("align")),
 					basis->findAttribute("layer"),
-					basis->findAttribute("name")
-				);
+					basis->findAttribute("name"));
 
 				xml::ElementEnumerator child_params = basis->getElementEnumerator();
 				while (child_params.next("Property"))

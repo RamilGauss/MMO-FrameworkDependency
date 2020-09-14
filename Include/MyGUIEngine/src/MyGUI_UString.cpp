@@ -1,24 +1,9 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		08/2009
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_UString.h"
 
@@ -28,7 +13,7 @@ namespace MyGUI
 	//--------------------------------------------------------------------------
 	UString::_base_iterator::_base_iterator()
 	{
-		mString = 0;
+		mString = nullptr;
 	}
 	//--------------------------------------------------------------------------
 	void UString::_base_iterator::_seekFwd( size_type c )
@@ -115,14 +100,17 @@ namespace MyGUI
 	//--------------------------------------------------------------------------
 	//--------------------------------------------------------------------------
 	//--------------------------------------------------------------------------
-	UString::_fwd_iterator::_fwd_iterator()
-	{
-
-	}
+	UString::_fwd_iterator::_fwd_iterator() = default;
 	//--------------------------------------------------------------------------
 	UString::_fwd_iterator::_fwd_iterator( const _fwd_iterator& i )
 	{
 		_become( i );
+	}
+	//--------------------------------------------------------------------------
+	UString::_fwd_iterator& UString::_fwd_iterator::operator=( const _fwd_iterator& i )
+	{
+		_become( i );
+		return *this;
 	}
 	//--------------------------------------------------------------------------
 	UString::_fwd_iterator& UString::_fwd_iterator::operator++()
@@ -226,14 +214,17 @@ namespace MyGUI
 	//--------------------------------------------------------------------------
 	//--------------------------------------------------------------------------
 	//--------------------------------------------------------------------------
-	UString::_const_fwd_iterator::_const_fwd_iterator()
-	{
-
-	}
+	UString::_const_fwd_iterator::_const_fwd_iterator() = default;
 	//--------------------------------------------------------------------------
 	UString::_const_fwd_iterator::_const_fwd_iterator( const _const_fwd_iterator& i )
 	{
 		_become( i );
+	}
+	//--------------------------------------------------------------------------
+	UString::_const_fwd_iterator& UString::_const_fwd_iterator::operator=( const _const_fwd_iterator& i )
+	{
+		_become( i );
+		return *this;
 	}
 	//--------------------------------------------------------------------------
 	UString::_const_fwd_iterator::_const_fwd_iterator( const _fwd_iterator& i )
@@ -337,10 +328,7 @@ namespace MyGUI
 	//--------------------------------------------------------------------------
 	//--------------------------------------------------------------------------
 	//--------------------------------------------------------------------------
-	UString::_rev_iterator::_rev_iterator()
-	{
-
-	}
+	UString::_rev_iterator::_rev_iterator() = default;
 	//--------------------------------------------------------------------------
 	UString::_rev_iterator::_rev_iterator( const _rev_iterator& i )
 	{
@@ -426,10 +414,7 @@ namespace MyGUI
 	//--------------------------------------------------------------------------
 	//--------------------------------------------------------------------------
 	//--------------------------------------------------------------------------
-	UString::_const_rev_iterator::_const_rev_iterator()
-	{
-
-	}
+	UString::_const_rev_iterator::_const_rev_iterator() = default;
 	//--------------------------------------------------------------------------
 	UString::_const_rev_iterator::_const_rev_iterator( const _const_rev_iterator& i )
 	{
@@ -1929,14 +1914,14 @@ namespace MyGUI
 
 	void UString::_init()
 	{
-		m_buffer.mVoidBuffer = 0;
+		m_buffer.mVoidBuffer = nullptr;
 		m_bufferType = bt_none;
 		m_bufferSize = 0;
 	}
 
 	void UString::_cleanBuffer() const
 	{
-		if ( m_buffer.mVoidBuffer != 0 ) {
+		if ( m_buffer.mVoidBuffer != nullptr ) {
 			switch ( m_bufferType ) {
 				case bt_string:
 					delete m_buffer.mStrBuffer;
@@ -1948,14 +1933,13 @@ namespace MyGUI
 					delete m_buffer.mUTF32StrBuffer;
 					break;
 				case bt_none: // under the worse of circumstances, this is all we can do, and hope it works out
-				default:
 					//delete m_buffer.mVoidBuffer;
 					// delete void* is undefined, don't do that
 					assert("This should never happen - mVoidBuffer should never contain something if we "
 						"don't know the type");
 					break;
 			}
-			m_buffer.mVoidBuffer = 0;
+			m_buffer.mVoidBuffer = nullptr;
 			m_bufferSize = 0;
 			m_bufferType = bt_none;
 		}

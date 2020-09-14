@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		11/2007
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_LAYOUT_MANAGER_H__
-#define __MYGUI_LAYOUT_MANAGER_H__
+#ifndef MYGUI_LAYOUT_MANAGER_H_
+#define MYGUI_LAYOUT_MANAGER_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_Singleton.h"
@@ -32,6 +17,7 @@
 namespace MyGUI
 {
 
+	typedef delegates::CMultiDelegate2<Widget*, const WidgetInfo&> EventHandle_CreateWidgetDelegate;
 	typedef delegates::CMultiDelegate3<Widget*, const std::string&, const std::string&> EventHandle_AddUserStringDelegate;
 
 	class MYGUI_EXPORT LayoutManager :
@@ -61,6 +47,15 @@ namespace MyGUI
 		/** Check if skin with specified name exist */
 		bool isExist(const std::string& _name) const;
 
+		/** Event : Multidelegate. Widget was created from layout.\n
+		signature : void method(MyGUI::Widget* _sender, const MyGUI::WidgetInfo& _widgetInfo)
+		@param _widget Widget that got new UserString.
+		@param _key UserString key.
+		@param _key UserString value.
+		@note Happens only when Widget was loaded from layout, but not when it was created in code.
+		*/
+		EventHandle_CreateWidgetDelegate eventCreateWidget;
+
 		/** Event : Multidelegate. UserString was added from layout.\n
 			signature : void method(MyGUI::Widget* _widget, const std::string& _key, const std::string& _value)
 			@param _widget Widget that got new UserString.
@@ -68,8 +63,7 @@ namespace MyGUI
 			@param _key UserString value.
 			@note Happens only when UserString was loaded from layout, but not when it was added in code.
 		*/
-		EventHandle_AddUserStringDelegate
-			eventAddUserString;
+		EventHandle_AddUserStringDelegate eventAddUserString;
 
 		const std::string& getCurrentLayout() const;
 
@@ -84,4 +78,4 @@ namespace MyGUI
 
 } // namespace MyGUI
 
-#endif // __MYGUI_LAYOUT_MANAGER_H__
+#endif // MYGUI_LAYOUT_MANAGER_H_

@@ -1,24 +1,9 @@
-/*!
-	@file
-	@author		Alexander Ptakhin
-	@date		01/2009
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "MyGUI_Precompiled.h"
 #include "MyGUI_Canvas.h"
 #include "MyGUI_ResourceManager.h"
@@ -30,11 +15,11 @@ namespace MyGUI
 {
 
 	Canvas::Canvas() :
-		mTexture( nullptr ),
+		mTexture(nullptr),
 		mTexResizeMode( TRM_PT_CONST_SIZE ),
-		mTexData( 0 ),
-		mTexManaged( true ),
-		mFrameAdvise( false ),
+		mTexData(nullptr),
+		mTexManaged(true),
+		mFrameAdvise(false),
 		mInvalidateData(false)
 	{
 		mGenTexName = utility::toString((size_t)this, "_Canvas");
@@ -198,9 +183,7 @@ namespace MyGUI
 					0,
 					0,
 					(float) mReqTexSize.width  / (float) getTextureRealWidth(),
-					(float) mReqTexSize.height / (float) getTextureRealHeight()
-				)
-			);
+					(float) mReqTexSize.height / (float) getTextureRealHeight()));
 		}
 
 		if ( mTexResizeMode == TRM_PT_CONST_SIZE || mTexResizeMode == TRM_PT_VIEW_ALL )
@@ -331,16 +314,6 @@ namespace MyGUI
 	const std::string& Canvas::getTextureName() const
 	{
 		return mTexture->getName();
-	}
-
-	void Canvas::setSize(int _width, int _height)
-	{
-		setSize(IntSize(_width, _height));
-	}
-
-	void Canvas::setCoord(int _left, int _top, int _width, int _height)
-	{
-		setCoord(IntCoord(_left, _top, _width, _height));
 	}
 
 	Canvas::TextureResizeMode Canvas::getResizeMode() const

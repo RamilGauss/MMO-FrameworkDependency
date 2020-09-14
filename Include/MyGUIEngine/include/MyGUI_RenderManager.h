@@ -1,26 +1,11 @@
-/*!
-	@file
-	@author		Albert Semenov
-	@date		04/2009
-*/
 /*
-	This file is part of MyGUI.
+ * This source file is part of MyGUI. For the latest info, see http://mygui.info/
+ * Distributed under the MIT License
+ * (See accompanying file COPYING.MIT or copy at http://opensource.org/licenses/MIT)
+ */
 
-	MyGUI is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Lesser General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	MyGUI is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU Lesser General Public License for more details.
-
-	You should have received a copy of the GNU Lesser General Public License
-	along with MyGUI.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef __MYGUI_RENDER_MANAGER_H__
-#define __MYGUI_RENDER_MANAGER_H__
+#ifndef MYGUI_RENDER_MANAGER_H_
+#define MYGUI_RENDER_MANAGER_H_
 
 #include "MyGUI_Prerequest.h"
 #include "MyGUI_Singleton.h"
@@ -61,6 +46,9 @@ namespace MyGUI
 		/** Check if texture format supported by hardware */
 		virtual bool isFormatSupported(PixelFormat _format, TextureUsage _usage);
 
+        /** Set render view size. Should be called on every window resize */
+		virtual void setViewSize(int _width, int _height) = 0;
+
 #if MYGUI_DEBUG_MODE == 1
 		/** Check if texture is valid */
 		virtual bool checkTexture(ITexture* _texture);
@@ -74,4 +62,4 @@ namespace MyGUI
 
 } // namespace MyGUI
 
-#endif // __MYGUI_RENDER_MANAGER_H__
+#endif // MYGUI_RENDER_MANAGER_H_
